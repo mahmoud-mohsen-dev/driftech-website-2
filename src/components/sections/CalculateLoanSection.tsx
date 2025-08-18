@@ -50,7 +50,9 @@ function CalculateLoanSection() {
               Flexible payment terms up to 84 months
             </ServicesList>
           </ul>
-          <Btn onClick={handleClick}>Calculate Your Loan</Btn>
+          <Btn handleClick={handleClick} fontSytles="">
+            Calculate Your Loan
+          </Btn>
         </div>
       </div>
     </section>
