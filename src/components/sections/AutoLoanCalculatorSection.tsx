@@ -1,5 +1,5 @@
 import FeaturesList from "../UI/FeaturesList";
-import "../../styles/mdoule.css";
+import "../../styles/small-components-styles.css";
 import Btn from "../UI/buttons/Btn";
 import AutoLoanCalculatorForm from "../forms/AutoLoanCalculatorForm";
 
