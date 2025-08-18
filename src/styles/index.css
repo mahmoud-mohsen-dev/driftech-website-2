@@ -3,6 +3,10 @@
 @import "./layout.css";
 @import "./small-components-styles.css";
 
+@import "swiper/css";
+@import "swiper/css/free-mode";
+@import "swiper/css/pagination";
+
 @import "tailwindcss";
 
 @theme {
