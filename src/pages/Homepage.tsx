@@ -4,6 +4,7 @@ import Header from "../components/sections/Header";
 import CalculateLoanSection from "../components/sections/CalculateLoanSection";
 import DrifterOffersSection from "../components/sections/DrifterOffersSection";
 import TrustedPartnersSection from "../components/sections/TrustedPartnersSection";
+import AutoLoanCalculatorSection from "../components/sections/AutoLoanCalculatorSection";
 
 function Homepage() {
   return (
@@ -14,6 +15,7 @@ function Homepage() {
         <CalculateLoanSection />
         <DrifterOffersSection />
         <TrustedPartnersSection />
+        <AutoLoanCalculatorSection />
       </main>
       <Footer />
     </div>

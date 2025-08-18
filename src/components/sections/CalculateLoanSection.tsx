@@ -1,6 +1,6 @@
 import Btn from "../UI/buttons/Btn";
 import shakeHands from "../../assets/sections/shake-hands.jpg";
-import ServicesList from "../UI/ServicesList";
+import FeaturesList from "../UI/FeaturesList";
 
 function CalculateLoanSection() {
   const handleClick = () => {
@@ -36,21 +36,21 @@ function CalculateLoanSection() {
             </p>
           </div>
           <ul>
-            <ServicesList
+            <FeaturesList
               image={{ src: "/icons/tick-square.svg", alt: "tick square" }}
             >
               Instant pre-approval in minutes
-            </ServicesList>
-            <ServicesList
+            </FeaturesList>
+            <FeaturesList
               image={{ src: "/icons/security.svg", alt: "security" }}
             >
               Competitive rates starting at 2.9% APR
-            </ServicesList>
-            <ServicesList image={{ src: "/icons/clock.svg", alt: "clock" }}>
+            </FeaturesList>
+            <FeaturesList image={{ src: "/icons/clock.svg", alt: "clock" }}>
               Flexible payment terms up to 84 months
-            </ServicesList>
+            </FeaturesList>
           </ul>
-          <Btn handleClick={handleClick} fontSytles="">
+          <Btn handleClick={handleClick} className="">
             Calculate Your Loan
           </Btn>
         </div>

@@ -1,0 +1,20 @@
+.auto-loan-calculator-list .heading-list-title {
+  color: var(--color-foundation-gray-normal-active);
+  font: 20px;
+  font-family: var(--font-inter);
+  font-weight: 600;
+  line-height: 24px;
+  text-transform: capitalize;
+  display: block;
+  width: 100%;
+}
+
+.auto-loan-calculator-list .heading-list-description {
+  font-family: var(--font-inter);
+  font: 16px;
+  color: var(--color-foundation-gray-normal-active);
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  line-height: 19px;
+}
