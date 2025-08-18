@@ -57,6 +57,7 @@
   --shadow-custom: 0px 5px 10px 6px rgba(0, 0, 0, 0.12);
   --shadow-drifter-card: 0px 4px 24px 0px rgba(169, 169, 169, 0.4);
   --shadow-partner-image: 0px 3.21px 9.93px 0px rgba(113, 113, 113, 0.25);
+  --shadow-dark-gray: 0px 4px 12px 0px rgba(113, 113, 113, 0.25);
 
   /* Gradients */
   --gradient-foundation-brown-1: linear-gradient(
@@ -167,4 +168,19 @@
   button {
     cursor: pointer;
   }
+}
+
+.contact-us-title-left {
+  background: var(--gradient-foundation-brown-3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Needed for Safari/Chrome */
+  color: transparent; /* Fallback */
+}
+.contact-us-title-right {
+  background: var(--gradient-foundation-brown-2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Needed for Safari/Chrome */
+  color: transparent; /* Fallback */
 }

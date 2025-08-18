@@ -10,6 +10,7 @@ import SliderSection from "../components/slider/SliderSection";
 import carImage from "../assets/slider/car-1.png";
 import carImage2 from "../assets/slider/black-mini-coupe-road 1.png";
 import motorcycleImage from "../assets/slider/motorcycle-1.png";
+import ContactUsSection from "../components/sections/ContactUsSection";
 
 function Homepage() {
   const VehicleFinancingImages = [
@@ -78,6 +79,7 @@ function Homepage() {
             </div>
           </div>
         </SliderSection>
+        <ContactUsSection />
       </main>
       <Footer />
     </div>

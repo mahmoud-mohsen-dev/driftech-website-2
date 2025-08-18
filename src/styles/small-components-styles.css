@@ -22,3 +22,10 @@
 .swiper-pagination-bullet-active {
   background-color: var(--color-foundation-orange-normal);
 }
+
+/* .contact-us-title {
+  background: -webkit-linear-gradient(var(--gradient-foundation-brown-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
