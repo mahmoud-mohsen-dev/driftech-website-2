@@ -62,7 +62,7 @@ function Homepage() {
         >
           <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center">
             <img
-              src="/public/icons/play-video.svg"
+              src="/icons/play-video.svg"
               alt="play video icon"
               width={52}
               height={52}
