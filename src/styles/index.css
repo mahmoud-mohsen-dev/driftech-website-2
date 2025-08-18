@@ -1,0 +1,165 @@
+/* @import "./base.css"; */
+@import "./layout.css";
+/* @import "./module.css";
+@import "./state.css"; */
+
+@import "tailwindcss";
+
+@theme {
+  /* Foundation Colors */
+  --color-foundation-brown-darker: #100e0c;
+  --color-foundation-brown-normal: #2e2923;
+  --color-foundation-brown-medium: #701900;
+
+  --color-foundation-orange-normal: #e73201;
+  --color-foundation-orange-light: #ffebe6;
+  --color-foundation-orange-light-hover: #fee1d9;
+  --color-foundation-orange-light-active: #fdc1b0;
+  --color-foundation-orange-light-medium: #ff9f83;
+
+  --color-foundation-gray-normal: #838790;
+  --color-foundation-gray-normal-hover: #767a82;
+  --color-foundation-gray-normal-active: #3b3d41;
+  --color-foundation-gray-lighter: #f3f3f4; /* foundation-grey-light */
+  --color-foundation-gray-light: #f8f8f8;
+
+  /* Neutrals & Basics */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f0f0f0;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-500: #e5e7eb;
+
+  --color-black: #000000;
+  --color-black-medium: #232323;
+  --color-background: #eef3f3;
+  --color-primary: #0e0f3b;
+  --color-orange-medium: #ff3700;
+
+  /* Gray Medium Shades */
+  --color-gray-medium-300: #f9f9f9;
+  --color-gray-medium-400: #e4e4e7;
+  --color-gray-medium-500: #d9d9d9;
+  --color-gray-medium-600: #a1a1aa;
+  --color-gray-medium-700: #9c9c9c;
+  --color-gray-medium-800: #717171;
+  --color-gray-medium-900: #3d3d3d;
+
+  /* Opacity Variants */
+  --color-gray-medium-opacity-42: #3e3e3e6b;
+  --color-gray-normal-opacity-80: #787878cc;
+  --color-orange-opacity-60: #ce590699;
+
+  /* Shadows */
+  --shadow-custom: 0px 5px 10px 6px rgba(0, 0, 0, 0.12);
+  --shadow-drifter-card: 0px 4px 24px 0px rgba(169, 169, 169, 0.4);
+
+  /* Gradients */
+  --gradient-foundation-brown-1: linear-gradient(
+    to right,
+    #be2900 0%,
+    #4e1200 100%
+  );
+  --gradient-foundation-brown-2: linear-gradient(
+    to right,
+    #e73201 0%,
+    #6f1901 100%
+  );
+  --gradient-foundation-brown-3: linear-gradient(
+    to right,
+    #e73201 0%,
+    #691701 70%,
+    transparent 100%
+  );
+
+  --gradient-black-fade: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #000000 89%,
+    transparent 100%
+  );
+
+  /* Fonts */
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "DM Sans", sans-serif;
+  --font-mono: "Poppins", sans-serif;
+
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+
+  /* Fonts Used in Figma Design */
+  /* 
+    Poppins - Regular
+    Poppins - Medium
+    Poppins - SemiBold
+    Poppins - Bold
+
+    Inter - Regular
+    Inter - Medium
+    Inter - Semi Bold
+
+    DM Sans - Regular
+    DM Sans - Bold
+
+    Montserrat - Medium
+ */
+
+  /* Breakpoints */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 73.75rem; /* 1180px */
+  --breakpoint-2xl: 90rem; /* 1440px */
+  --breakpoint-3xl: 100rem; /* 1600px */
+
+  /* Containers */
+  /* --container-3xs: 16rem; /* 256px */
+  /* --container-2xs: 18rem; /* 288px */
+  /* --container-xs: 20rem; 320px */
+  /* --container-sm: 24rem; 384px */
+  /* --container-md: 28rem; 448px */
+  /* --container-lg: 32rem; 512px */
+  /* --container-xl: 36rem; 576px */
+  /* --container-2xl: 42rem; 672px */
+  /* --container-3xl: 48rem; 768px */
+  /* --container-4xl: 56rem; 896px */
+  /* --container-5xl: 64rem; 1024px */
+  /* --container-6xl: 73.75rem; 1180px */
+  /* --container-7xl: 90rem; 1440px */
+  /* --container-8xl: 100rem; 1600px */
+}
+
+@layer base {
+  h1 {
+    @apply text-[48px] leading-[53px] font-bold;
+  }
+
+  h2 {
+    @apply text-[36px] font-semibold;
+  }
+
+  h3 {
+    @apply text-[24px] font-medium;
+  }
+
+  h4 {
+    @apply text-[20px] font-medium;
+  }
+
+  h5 {
+    @apply text-[14px] leading-[22px] font-normal;
+  }
+
+  h6 {
+    @apply text-[12px] font-normal;
+  }
+
+  p {
+    @apply text-[16px] font-normal;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
