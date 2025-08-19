@@ -11,6 +11,7 @@ import VehicleFinancingSection from "../components/sections/VehicleFinancingSect
 import DriftechVlogs from "../components/sections/DriftechVlogs";
 import CarsByDownPaymentsSection from "../components/sections/CarsByDownPaymentsSection";
 import AppAdvertisementSection from "../components/sections/AppAdvertisementSection";
+import PurchaseTutorialSection from "../components/sections/PurchaseTutorialSection";
 
 function Homepage() {
   return (
@@ -25,7 +26,7 @@ function Homepage() {
 
         <CarsByDownPaymentsSection />
         <AppAdvertisementSection />
-        {/* purchase totuorial section */}
+        <PurchaseTutorialSection />
 
         <VehicleFinancingSection />
         <DriftechVlogs />
