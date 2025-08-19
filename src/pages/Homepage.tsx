@@ -1,15 +1,16 @@
-import Footer from "../components/sections/Footer";
-import HeroSection from "../components/sections/HeroSection";
 import Header from "../components/sections/Header";
+import HeroSection from "../components/sections/HeroSection";
+import Footer from "../components/sections/Footer";
 import CalculateLoanSection from "../components/sections/CalculateLoanSection";
 import DrifterOffersSection from "../components/sections/DrifterOffersSection";
 import TrustedPartnersSection from "../components/sections/TrustedPartnersSection";
 import AutoLoanCalculatorSection from "../components/sections/AutoLoanCalculatorSection";
 
 import ContactUsSection from "../components/sections/ContactUsSection";
-import CarsByDownPaymentsSection from "../components/sections/carsByDownPaymentsSection";
 import VehicleFinancingSection from "../components/sections/VehicleFinancingSection";
 import DriftechVlogs from "../components/sections/DriftechVlogs";
+import CarsByDownPaymentsSection from "../components/sections/CarsByDownPaymentsSection";
+import AppAdvertisementSection from "../components/sections/AppAdvertisementSection";
 
 function Homepage() {
   return (
@@ -23,7 +24,7 @@ function Homepage() {
         <AutoLoanCalculatorSection />
 
         <CarsByDownPaymentsSection />
-        {/* App Addvertisement section*/}
+        <AppAdvertisementSection />
         {/* purchase totuorial section */}
 
         <VehicleFinancingSection />

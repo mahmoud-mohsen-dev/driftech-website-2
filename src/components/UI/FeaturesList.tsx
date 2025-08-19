@@ -18,6 +18,7 @@ function FeaturesList({
         alt={alt}
         width={imageStyle.width}
         height={imageStyle.height}
+        // className={`${imageStyle.width} ${imageStyle.height}`}
       />
       <span className={`${spanStyle}`}>{children}</span>
     </li>
