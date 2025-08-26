@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import HomePage from "./pages/Homepage";
+import HomePage from "./pages/HomePage";
 import AuthLayout from "./features/auth/AuthLayout";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
