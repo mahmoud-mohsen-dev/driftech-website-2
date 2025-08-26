@@ -1,7 +1,7 @@
 import LabelInput from "./LabelInput";
 
-import Counter from "../../assets/background/counter.png";
-import Btn from "../UI/buttons/Btn";
+import Counter from "../../../assets/backgrounds/counter.png";
+import Btn from "../buttons/Btn";
 
 function AutoLoanCalculatorForm() {
   const handleReset = () => {};
@@ -27,16 +27,18 @@ function AutoLoanCalculatorForm() {
           id="carPrice"
           label="Car Price"
           placeholder="25,000.0 EGP"
+          inputClassName="px-2"
         />
         <LabelInput
           id="downPayment"
           label="Down payment"
           placeholder="25,000.0 EGP"
+          inputClassName="px-2"
         />
         <LabelInput
           id="ChoosePeriod"
           label="Choose period"
-          placeholder="84 month ( 7 years )"
+          // placeholder="84 month ( 7 years )"
           isSelect={true}
           options={[{ label: "84 month ( 7 years )", value: "84" }]}
         />

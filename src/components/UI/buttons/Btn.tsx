@@ -1,21 +1,23 @@
 function Btn({
   children,
   variant = "default",
-  handleClick,
+  handleClick = () => {},
   className = "font-inter leading-[17.8px] font-medium capitalize rounded-[9.47px] p-3 ",
   width = "w-[210px]",
   height = "h-[53px]",
+  type = "button",
 }: {
   children: React.ReactNode;
   variant?: "default" | "outline-for-bg-light" | "outline-for-bg-dark";
-  handleClick: React.MouseEventHandler<HTMLButtonElement>;
+  handleClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   width?: string;
   height?: string;
+  type?: "button" | "submit" | "reset";
 }) {
   const styles = {
     default:
-      "duration-100 ease-linear transition-colors flex items-center justify-center ",
+      "duration-100 ease-linear transition-all flex items-center justify-center ",
     defaultColors:
       "bg-foundation-orange-normal text-neutral-0 hover:text-foundation-orange-normal hover:bg-neutral-0",
     outlineForBgLightColors:
@@ -38,6 +40,7 @@ function Btn({
     <button
       onClick={handleClick}
       className={`${width} ${height} ${styles.default} ${finalStyles} ${className}`}
+      type={type}
     >
       {children}
     </button>

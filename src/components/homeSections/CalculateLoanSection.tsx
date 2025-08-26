@@ -41,17 +41,17 @@ function CalculateLoanSection() {
             >
               Instant pre-approval in minutes
             </FeaturesList>
+            <FeaturesList image={{ src: "/icons/clock.svg", alt: "clock" }}>
+              Flexible payment terms up to 84 months
+            </FeaturesList>
             <FeaturesList
               image={{ src: "/icons/security.svg", alt: "security" }}
             >
               Competitive rates starting at 2.9% APR
             </FeaturesList>
-            <FeaturesList image={{ src: "/icons/clock.svg", alt: "clock" }}>
-              Flexible payment terms up to 84 months
-            </FeaturesList>
           </ul>
-          <Btn handleClick={handleClick} className="">
-            Calculate Your Loan
+          <Btn handleClick={handleClick} className="rounded-lg">
+            Financing
           </Btn>
         </div>
       </div>

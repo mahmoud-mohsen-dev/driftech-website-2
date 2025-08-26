@@ -1,4 +1,5 @@
-import NavLink from "../UI/NavLink";
+import { NavLink } from "react-router";
+import MyNavLink from "../UI/MyNavLink";
 
 function Header() {
   return (
@@ -7,22 +8,24 @@ function Header() {
 
       <nav>
         <ul className="flex items-center gap-[27.4px] leading-[30px] capitalize">
-          <NavLink href="#">Home</NavLink>
-          <NavLink href="#">Cars</NavLink>
-          <NavLink href="#">My Finance Status</NavLink>
-          <NavLink href="#">About</NavLink>
-          <NavLink href="#">Contact</NavLink>
-          <NavLink href="#">Vlogs</NavLink>
+          <MyNavLink to="/">Home</MyNavLink>
+          <MyNavLink to="/cars">Cars</MyNavLink>
+          <MyNavLink to="/my-finance-status">My Finance Status</MyNavLink>
+          <MyNavLink to="/about">About</MyNavLink>
+          <MyNavLink to="/contact">Contact</MyNavLink>
+          <MyNavLink to="/vlogs">Vlogs</MyNavLink>
         </ul>
       </nav>
 
       <div className="flex items-center gap-1.5">
-        <a
-          href="#login"
-          className="text-foundation-brown-normal hover:text-orange-medium px-6 py-3 leading-6 capitalize underline transition duration-200 ease-linear"
+        <NavLink
+          to={"/login"}
+          className={({ isActive }) =>
+            `text-foundation-brown-normal hover:text-orange-medium px-6 py-3 leading-6 capitalize underline transition duration-200 ease-linear ${isActive ? "text-orange-medium" : "text-black"}`
+          }
         >
           Log In
-        </a>
+        </NavLink>
         <a
           href="#create-account"
           className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal rounded-lg p-2.5 capitalize transition duration-200 ease-in"

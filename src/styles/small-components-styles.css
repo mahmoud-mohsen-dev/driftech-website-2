@@ -23,9 +23,12 @@
   background-color: var(--color-foundation-orange-normal);
 }
 
-/* .contact-us-title {
-  background: -webkit-linear-gradient(var(--gradient-foundation-brown-3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
+/* Nav Link Styles */
+.menu-item:hover span {
+  width: 100%;
+  background-color: var(--color-foundation-orange-normal);
+}
+
+a.active span {
+  width: 100%;
+}

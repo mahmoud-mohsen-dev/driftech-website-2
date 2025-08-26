@@ -1,4 +1,4 @@
-import FilterRadioGroup from "../forms/FilterRadioGroup";
+import FilterRadioGroup from "../UI/forms/FilterRadioGroup";
 import ImageSliderForCards from "../slider/ImageSliderForCards";
 import CarDownPaymentCard from "../UI/cards/CarDownPaymentCard";
 

@@ -1,3 +1,4 @@
+import Anchor from "../UI/buttons/Anchor";
 import DrifterOfferCard from "../UI/cards/DrifferOfferCard";
 
 function DrifterOffersSection() {
@@ -39,6 +40,11 @@ function DrifterOffersSection() {
             linkHref="#"
             key={"drifter-1"}
           />
+        </div>
+        <div className="mt-9 flex items-center justify-center">
+          <Anchor href="#" className="rounded-lg">
+            View More
+          </Anchor>
         </div>
       </div>
     </section>

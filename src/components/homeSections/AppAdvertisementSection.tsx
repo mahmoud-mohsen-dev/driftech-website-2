@@ -1,6 +1,6 @@
 import DownloadApp from "../UI/buttons/DownloadApp";
 import FeaturesList from "../UI/FeaturesList";
-import mobileAppImage from "../../assets/background/mobile-app.png";
+import mobileAppImage from "../../assets/backgrounds/mobile-app.png";
 
 function AppAdvertisementSection() {
   return (

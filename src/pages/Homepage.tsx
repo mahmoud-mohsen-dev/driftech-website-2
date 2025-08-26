@@ -1,19 +1,19 @@
-import Header from "../components/sections/Header";
-import HeroSection from "../components/sections/HeroSection";
-import Footer from "../components/sections/Footer";
-import CalculateLoanSection from "../components/sections/CalculateLoanSection";
-import DrifterOffersSection from "../components/sections/DrifterOffersSection";
-import TrustedPartnersSection from "../components/sections/TrustedPartnersSection";
-import AutoLoanCalculatorSection from "../components/sections/AutoLoanCalculatorSection";
+import Header from "../components/homeSections/Header";
+import HeroSection from "../components/homeSections/HeroSection";
+import Footer from "../components/homeSections/Footer";
+import CalculateLoanSection from "../components/homeSections/CalculateLoanSection";
+import DrifterOffersSection from "../components/homeSections/DrifterOffersSection";
+import TrustedPartnersSection from "../components/homeSections/TrustedPartnersSection";
+import AutoLoanCalculatorSection from "../components/homeSections/AutoLoanCalculatorSection";
 
-import ContactUsSection from "../components/sections/ContactUsSection";
-import VehicleFinancingSection from "../components/sections/VehicleFinancingSection";
-import DriftechVlogs from "../components/sections/DriftechVlogs";
-import CarsByDownPaymentsSection from "../components/sections/CarsByDownPaymentsSection";
-import AppAdvertisementSection from "../components/sections/AppAdvertisementSection";
-import PurchaseTutorialSection from "../components/sections/PurchaseTutorialSection";
+import ContactUsSection from "../components/homeSections/ContactUsSection";
+import VehicleFinancingSection from "../components/homeSections/VehicleFinancingSection";
+import DriftechVlogs from "../components/homeSections/DriftechVlogs";
+import CarsByDownPaymentsSection from "../components/homeSections/CarsByDownPaymentsSection";
+import AppAdvertisementSection from "../components/homeSections/AppAdvertisementSection";
+import PurchaseTutorialSection from "../components/homeSections/PurchaseTutorialSection";
 
-function Homepage() {
+function HomePage() {
   return (
     <div className="">
       <Header />
@@ -37,4 +37,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePage;

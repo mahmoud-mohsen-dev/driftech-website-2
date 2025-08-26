@@ -1,7 +1,7 @@
 import FeaturesList from "../UI/FeaturesList";
 import "../../styles/small-components-styles.css";
 import Btn from "../UI/buttons/Btn";
-import AutoLoanCalculatorForm from "../forms/AutoLoanCalculatorForm";
+import AutoLoanCalculatorForm from "../UI/forms/AutoLoanCalculatorForm";
 
 function AutoLoanListItem({
   src,
