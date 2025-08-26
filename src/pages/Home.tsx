@@ -13,7 +13,7 @@ import CarsByDownPaymentsSection from "../components/homeSections/CarsByDownPaym
 import AppAdvertisementSection from "../components/homeSections/AppAdvertisementSection";
 import PurchaseTutorialSection from "../components/homeSections/PurchaseTutorialSection";
 
-function HomePage() {
+function Home() {
   return (
     <div className="">
       <Header />
@@ -37,4 +37,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Home;
