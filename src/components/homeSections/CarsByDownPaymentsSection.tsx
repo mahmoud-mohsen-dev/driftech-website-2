@@ -4,7 +4,7 @@ import CarDownPaymentCard from "../UI/cards/CarDownPaymentCard";
 
 function CarsByDownPaymentsSection() {
   return (
-    <section className="font-poppins">
+    <section className="font-poppins pt-20">
       <div className="container">
         <div className="mb-[0.9375rem] flex items-center justify-between">
           <h1 className="text-black-medium text-[1.875rem] leading-[2.8125rem] font-semibold">

@@ -35,7 +35,7 @@ function CalculateLoanSection() {
               best rates and terms tailored to your budget.
             </p>
           </div>
-          <ul>
+          <ul className="flex flex-col gap-5">
             <FeaturesList
               image={{ src: "/icons/tick-square.svg", alt: "tick square" }}
             >

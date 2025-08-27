@@ -1,19 +1,19 @@
-import UnderLineWithArrowRightAnchor from "../buttons/UnderLineWithArrowRightAnchor";
+// import UnderLineWithArrowRightAnchor from "../buttons/UnderLineWithArrowRightAnchor";
 
 function DrifterOfferCard({
   title,
   description,
-  linkHref = "#",
+  // linkHref = "#",
 }: {
   title: string;
   description: string;
-  linkHref?: string;
+  // linkHref?: string;
 }) {
   return (
-    <div className="shadow-drifter-card flex flex-col items-start gap-[28px] rounded-[14.95px] px-4 py-6">
+    <div className="shadow-drifter-card flex grow basis-0 flex-col items-start gap-[28px] rounded-[14.95px] px-4 py-9">
       <img src="/icons/star.svg" alt="star" />
-      <div>
-        <h3 className="font-poppins text-foundation-brown-normal text-[22px] leading-[150%]">
+      <div className="space-y-2.5">
+        <h3 className="font-poppins text-foundation-brown-normal text-[22px] leading-[150%] font-semibold">
           {title}
         </h3>
         <p className="font-poppins text-foundation-gray-normal text-[14px] leading-[150%] font-medium">
@@ -21,12 +21,12 @@ function DrifterOfferCard({
         </p>
       </div>
 
-      <UnderLineWithArrowRightAnchor
+      {/* <UnderLineWithArrowRightAnchor
         href={linkHref}
         image={{ src: "/icons/arrow-right.svg", alt: "arrow right" }}
       >
         Learn More
-      </UnderLineWithArrowRightAnchor>
+      </UnderLineWithArrowRightAnchor> */}
     </div>
   );
 }

@@ -31,7 +31,7 @@ function DriftechVlogs() {
           height={52}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
         />
-        <div className="absolute bottom-[14px] left-1/2 flex w-[347px] -translate-x-1/2 items-center justify-between">
+        <div className="absolute bottom-[14px] left-1/2 flex w-[347px] -translate-x-1/2 items-center justify-between px-4">
           <span className="font-poppins text-neutral-0 text-[22px] leading-[33px] font-medium">
             2025 Audi Review
           </span>

@@ -25,7 +25,12 @@ export default function ImageSliderForCards({
         style={{ paddingBottom: "42px" }}
       >
         {cards.map((card, index) => (
-          <SwiperSlide key={index}>{card}</SwiperSlide>
+          <SwiperSlide
+            key={index}
+            className="cursor-grab active:cursor-grabbing"
+          >
+            {card}
+          </SwiperSlide>
         ))}
       </Swiper>
     </>

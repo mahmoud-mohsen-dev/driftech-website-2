@@ -15,10 +15,10 @@ function HeroSection() {
           </h3>
           <Search />
           <div className="ml-[1px] flex w-full items-center gap-[34.25px]">
-            <Anchor href="#">Create Account</Anchor>
-            <Anchor href="#" variant="outline-for-bg-dark">
+            <Anchor href="#">Start Quiz</Anchor>
+            {/* <Anchor href="#" variant="outline-for-bg-dark">
               Create Account
-            </Anchor>
+            </Anchor> */}
           </div>
         </div>
       </section>

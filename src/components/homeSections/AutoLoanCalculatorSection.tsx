@@ -69,10 +69,10 @@ function AutoLoanCalculatorSection() {
             />
           </ul>
 
-          <div className="mt-[28px] flex items-center justify-start gap-[29px]">
+          {/* <div className="mt-[28px] flex items-center justify-start gap-[29px]">
             <Btn handleClick={handlCalculation}>Calculate Your Loan</Btn>
             <Btn handleClick={handlCalculation}>Calculate Your Loan</Btn>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Section */}

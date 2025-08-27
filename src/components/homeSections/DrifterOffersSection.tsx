@@ -17,27 +17,27 @@ function DrifterOffersSection() {
         </div>
         <div className="mt-[36px] flex w-full gap-8">
           <DrifterOfferCard
-            title="Show Drifter"
-            description="Building world-class IT teams with exceptional Egyptian talent."
-            linkHref="#"
+            title="Drift Now"
+            description="Get your car instantly with flexible payment options."
+            // linkHref="#"
             key={"drifter-1"}
           />
           <DrifterOfferCard
-            title="Show Drifter"
-            description="Building world-class IT teams with exceptional Egyptian talent."
-            linkHref="#"
+            title="Drift Trade"
+            description="Easily trade in your old car for a new one."
+            // linkHref="#"
             key={"drifter-1"}
           />
           <DrifterOfferCard
-            title="Show Drifter"
-            description="Building world-class IT teams with exceptional Egyptian talent."
-            linkHref="#"
+            title="Fleet Drift"
+            description="Smart solutions for businesses and car fleets."
+            // linkHref="#"
             key={"drifter-1"}
           />
           <DrifterOfferCard
-            title="Show Drifter"
-            description="Building world-class IT teams with exceptional Egyptian talent."
-            linkHref="#"
+            title="Drift & Save"
+            description="Save more with our exclusive offers and deals."
+            // linkHref="#"
             key={"drifter-1"}
           />
         </div>

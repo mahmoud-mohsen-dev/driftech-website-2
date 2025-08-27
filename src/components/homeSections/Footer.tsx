@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="bg-foundation-brown-medium py-13">
       <div className="container">
-        <section className="font-poppins lg:flex lg:gap-[38px]">
+        <section className="font-poppins lg:flex lg:gap-20">
           {/* Logo and description */}
           <div className="max-w-[286px]">
             <img src="/logos/Logo-2.svg" alt="drifttech logo" />
@@ -15,7 +15,8 @@ function Footer() {
               comfort, or reliability, your perfect ride is just a click away.
             </h5>
           </div>
-          <div className="w-full lg:grid lg:grid-cols-[1fr_1fr_306px] lg:gap-[38px]">
+          {/* <div className="w-full lg:grid lg:grid-cols-[1fr_1fr_306px] lg:gap-[38px]"> */}
+          <div className="flex w-full flex-col justify-between gap-[38px] lg:flex-row">
             {/* Footer links */}
             <div>
               <h5 className="text-neutral-0 mb-[30px] uppercase">Company</h5>
@@ -37,7 +38,9 @@ function Footer() {
             </div>
             {/* Newsletter subscription */}
             <div>
-              <h5 className="text-neutral-0 mb-[30px] uppercase">Newsletter</h5>
+              <h5 className="text-neutral-0 mb-[30px] min-w-[306px] uppercase">
+                Newsletter
+              </h5>
               <form>
                 <div className="bg-neutral-0 text-gray-medium-600 mb-3 flex h-[55px] items-center gap-2.5 rounded-[9px] p-4">
                   <img src="/icons/sms.svg" alt="sms icon" />

@@ -1,18 +1,11 @@
 import DownloadApp from "../UI/buttons/DownloadApp";
 import FeaturesList from "../UI/FeaturesList";
-import mobileAppImage from "../../assets/backgrounds/mobile-app.png";
+import mobileAppImage from "../../assets/backgrounds/mobile-app-2.png";
 
 function AppAdvertisementSection() {
   return (
     <section className="font-inter py-[80px]">
       <div className="container flex items-center xl:gap-8">
-        <div>
-          <img
-            src={mobileAppImage}
-            alt="mobile app photo"
-            className="h-[754px] min-w-[574px]"
-          />
-        </div>
         <div className="h-full">
           <h2 className="text-foundation-brown-darker text-[30px] leading-[36px] font-semibold">
             Drive Home Your Dream Car with{" "}
@@ -36,10 +29,10 @@ function AppAdvertisementSection() {
             <FeaturesList
               image={{ src: "/icons/security.svg", alt: "security" }}
             >
-              Instant pre-approval in minutes
+              Flexible payment terms up to 84 months
             </FeaturesList>
             <FeaturesList image={{ src: "/icons/clock.svg", alt: "clock" }}>
-              Instant pre-approval in minutes
+              Competitive rates starting at 2.9% APR
             </FeaturesList>
           </ul>
 
@@ -63,6 +56,14 @@ function AppAdvertisementSection() {
               size="large"
             />
           </div>
+        </div>
+        <div>
+          <img
+            src={mobileAppImage}
+            alt="mobile app photo"
+            className="min-w-[470px]"
+            width={470}
+          />
         </div>
       </div>
     </section>
