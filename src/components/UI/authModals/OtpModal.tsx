@@ -48,24 +48,18 @@ const OtpModal = ({ isModalOpen, setIsModalOpen }: OtpModalProps) => {
         centered
         footer={null}
         closeIcon={null}
-        styles={{
-          content: {
-            paddingBlock: 43,
-            paddingInline: 53,
-          },
-        }}
-        className="lg:min-w-[750px]"
+        className="otp-modal lg:min-w-[750px]"
       >
         <div className="font-poppins space-y-[2.4375rem]">
           <div className="space-y-[1.625rem] text-center">
-            <h2 className="text-[2rem] font-semibold text-black">
+            <h2 className="text-[1.6rem] leading-[3.0625rem] font-semibold text-black lg:text-[2rem]">
               Check your email
             </h2>
-            <p className="text-[1.4375rem] font-normal">
+            <p className="text-[1.375rem] leading-[2.1875rem] font-normal lg:text-[1.4375rem]">
               Enter the 6-digit verification code we sent to
             </p>
 
-            <div className="flex justify-center gap-[1.1875rem]">
+            <div className="flex flex-wrap justify-center gap-[1.1875rem]">
               <div className="flex min-h-[3.25rem] items-center gap-[0.375rem] rounded-[0.3125rem] px-[0.8125rem]">
                 <img
                   src="/icons/mail-02.svg"
@@ -74,7 +68,7 @@ const OtpModal = ({ isModalOpen, setIsModalOpen }: OtpModalProps) => {
                   height={36.36}
                   className="h-[36.36px] w-[26.36px]"
                 />
-                <span className="text-black-default text-[1.1875rem] leading-[1.8125rem] font-medium">
+                <span className="text-black-default text-sm leading-[1.8125rem] font-medium break-all md:text-base lg:text-[1.1875rem]">
                   salwalaa770@gmail.com
                 </span>
               </div>
@@ -96,7 +90,7 @@ const OtpModal = ({ isModalOpen, setIsModalOpen }: OtpModalProps) => {
             </Form>
           </div>
           <div className="text-center">
-            <h3 className="text-balck text-[1.1875rem] font-medium">
+            <h3 className="text-[1.1875rem] leading-[1.875rem] font-medium text-black">
               Didn’t receive the code?
             </h3>
 

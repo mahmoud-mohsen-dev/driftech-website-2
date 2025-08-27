@@ -32,8 +32,3 @@
 a.active span {
   width: 100%;
 }
-
-/* When there modal opens → move the image 15px to the right */
-body:has(.ant-modal-mask) .auth-background-image {
-  transform: translateX(15px);
-}

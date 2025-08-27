@@ -1,10 +1,26 @@
 /* Custom styles for modal */
+.otp-modal {
+  padding: 43px 53px;
+  /* box-sizing: content-box !important; */
+}
+
 .ant-modal-wrap {
   width: calc(100vw - 15px) !important;
+}
+
+/* When there modal opens → move the image 15px to the right */
+body:has(.ant-modal-mask) .auth-background-image {
+  transform: translateX(15px);
 }
 
 /* Custom styles for OTP inputs */
 .otp-form-holder .ant-otp-input {
   width: 56px;
   height: 56px;
+}
+
+.ant-form .ant-otp {
+  gap: 19.73px;
+  justify-content: center;
+  align-items: center;
 }
