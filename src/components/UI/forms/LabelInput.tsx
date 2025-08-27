@@ -1,5 +1,7 @@
 // import ArrowDownIcon from "/icons/arrow-down.svg";
 
+import { forwardRef } from "react";
+
 interface Option {
   label: string;
   value: string;
@@ -9,7 +11,7 @@ interface BaseProps {
   id: string;
   label: string;
   required?: boolean;
-  value?: string;
+  value?: string | number;
   onChange?: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -34,7 +36,11 @@ interface SelectProps extends BaseProps {
 
 type LabelInputProps = InputProps | SelectProps;
 
-export const LabelInput: React.FC<LabelInputProps> = (props) => {
+// 🔑 forwardRef lets us attach a ref to <input> or <select>
+export const LabelInput = forwardRef<
+  HTMLInputElement | HTMLSelectElement,
+  LabelInputProps
+>((props, ref) => {
   const {
     id,
     label,
@@ -58,6 +64,7 @@ export const LabelInput: React.FC<LabelInputProps> = (props) => {
         </label>
         <select
           id={id}
+          ref={ref as React.Ref<HTMLSelectElement>}
           value={value}
           onChange={onChange}
           required={required}
@@ -81,6 +88,7 @@ export const LabelInput: React.FC<LabelInputProps> = (props) => {
       </label>
       <input
         id={id}
+        ref={ref as React.Ref<HTMLInputElement>}
         type={type}
         placeholder={placeholder}
         value={value}
@@ -90,76 +98,6 @@ export const LabelInput: React.FC<LabelInputProps> = (props) => {
       />
     </div>
   );
-};
-
-// interface LabelInputProps {
-//   id: string;
-//   label: string;
-//   type?: string;
-//   placeholder?: string;
-//   value?: string;
-//   onChange?: (
-//     e:
-//       | React.ChangeEvent<HTMLInputElement>
-//       | React.ChangeEvent<HTMLSelectElement>,
-//   ) => void;
-//   required?: boolean;
-//   isSelect?: boolean;
-//   options?: { label: string; value: string }[];
-//   labelClassName?: string;
-//   selectClassName?: string;
-//   inputClassName?: string;
-// }
-
-// export const LabelInput: React.FC<LabelInputProps> = ({
-//   id,
-//   label,
-//   type = "text",
-//   placeholder,
-//   value,
-//   onChange,
-//   required = false,
-//   isSelect = false,
-//   options = [],
-//   labelClassName = "font-poppins text-sm leading-[21px] font-medium text-black capitalize",
-//   selectClassName = "border-gray-medium-700 focus:ring-orange-medium placeholder:text-gray-medium-700 h-[46px] cursor-pointer appearance-none rounded-[6.62px] border p-[8.27px] pr-[12px] text-xs leading-[18px] text-black placeholder:text-xs placeholder:leading-[18px] focus:ring-2",
-//   inputClassName = "border-gray-medium-700 focus:ring-orange-medium placeholder:text-gray-medium-700 h-[46px] rounded-[6.62px] border p-[8.27px] text-xs leading-[18px] text-black placeholder:text-xs placeholder:leading-[18px] focus:ring-2 focus:outline-none",
-// }) => {
-//   return (
-//     <div className="flex w-full flex-col gap-[12px]">
-//       <label htmlFor={id} className={`${labelClassName}`}>
-//         {label}
-//       </label>
-
-//       {isSelect && options.length > 0 ? (
-//         <select
-//           id={id}
-//           value={value}
-//           onChange={onChange}
-//           required={required}
-//           className={`${selectClassName}`}
-//         >
-//           {options.map(
-//             (option: { label: string; value: string }, i: number) => (
-//               <option key={i} value={option.value}>
-//                 {option.label}
-//               </option>
-//             ),
-//           )}
-//         </select>
-//       ) : (
-//         <input
-//           id={id}
-//           type={type}
-//           placeholder={placeholder}
-//           value={value}
-//           onChange={onChange}
-//           required={required}
-//           className={`${inputClassName}`}
-//         />
-//       )}
-//     </div>
-//   );
-// };
+});
 
 export default LabelInput;
