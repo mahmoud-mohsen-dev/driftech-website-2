@@ -2,6 +2,7 @@
 /* @import "./state.css"; */
 @import "./layout.css";
 @import "./small-components-styles.css";
+@import "./custom-antd-styles.css";
 
 @import "swiper/css";
 @import "swiper/css/free-mode";
@@ -21,6 +22,8 @@
   --color-foundation-orange-light-active: #fdc1b0;
   --color-foundation-orange-light-medium: #ff9f83;
 
+  --color-foundation-red-normal: #e93550;
+
   --color-foundation-gray-normal: #838790;
   --color-foundation-gray-normal-hover: #767a82;
   --color-foundation-gray-normal-active: #3b3d41;
@@ -32,9 +35,11 @@
   --color-neutral-25: #fffffc;
   --color-neutral-50: #f0f0f0;
   --color-neutral-100: #f5f5f5;
+  --color-neutral-300: #f3f4f6;
   --color-neutral-500: #e5e7eb;
 
   --color-black: #000000;
+  --color-black-default: #161616;
   --color-black-medium: #232323;
   --color-background: #eef3f3;
   --color-primary: #0e0f3b;

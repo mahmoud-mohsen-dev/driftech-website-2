@@ -1,15 +1,18 @@
 import { Link } from "react-router";
 import redCarBackgorund from "../assets/backgrounds/red-car-background-1.png";
 import LabelInput from "../components/UI/forms/LabelInput.tsx";
-import Btn from "../components/UI/buttons/Btn.tsx";
+// import Btn from "../components/UI/buttons/Btn.tsx";
 import { useAuth } from "../hooks/useAuth.tsx";
 
 import axios from "../api/axios.ts";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "antd";
+import OtpModal from "../components/UI/authModals/OtpModal.tsx";
 
 const LOGIN_URL = "/auth";
 
 function Login() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { setAuth } = useAuth();
 
   const [userEmail, setUserEmail] = useState<string>("");
@@ -35,6 +38,10 @@ function Login() {
   // const handleClick = () => {
   //   setOtpVerificationCode("123456");
   // };
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -92,13 +99,11 @@ function Login() {
           </p>
         </section>
       )} */}
-      <p
-        ref={errRef}
-        className={errMsg ? "errmsg" : "offscreen"}
-        aria-live="assertive"
-      >
-        {errMsg}
-      </p>
+      {errMsg && (
+        <p ref={errRef} className={"text-red-500"} aria-live="assertive">
+          {errMsg}
+        </p>
+      )}
       {/* <div className="flex max-w-[564px] flex-col gap-9 lg:mt-[200px] lg:ml-[146px]"> */}
       <div className="mx-5 mt-[12.5rem] flex flex-col gap-9 lg:col-span-4 lg:col-start-2 lg:mx-0 lg:max-w-[450px] xl:col-span-5 xl:col-start-2 xl:max-w-[564px]">
         <div className="min-h-[124.73px]">
@@ -128,14 +133,27 @@ function Login() {
             }}
           />
 
-          <Btn
+          {/* <Btn
             className="font font-inter mt-9 w-full rounded-[8px] text-2xl leading-[56px]"
             height="56px"
             type="submit"
             // handleClick={handleClick}
           >
             Login
-          </Btn>
+          </Btn> */}
+          <Button
+            type="primary"
+            className="mt-9 min-h-[56px] w-full text-2xl leading-[56px] font-medium"
+            onClick={showModal}
+            typeof="button"
+          >
+            Login
+          </Button>
+          <OtpModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            showModal={showModal}
+          />
         </form>
 
         <div>
@@ -152,7 +170,11 @@ function Login() {
       </div>
       <div className="hidden lg:col-span-full lg:col-start-6 lg:flex lg:justify-end xl:col-start-7">
         {/* <img src={redCarBackgorund} alt="" className="h-dvh" /> */}
-        <img src={redCarBackgorund} alt="" />
+        <img
+          src={redCarBackgorund}
+          alt="red car background"
+          className="auth-background-image"
+        />
       </div>
     </main>
   );

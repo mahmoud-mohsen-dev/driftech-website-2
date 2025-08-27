@@ -1,0 +1,10 @@
+/* Custom styles for modal */
+.ant-modal-wrap {
+  width: calc(100vw - 15px) !important;
+}
+
+/* Custom styles for OTP inputs */
+.otp-form-holder .ant-otp-input {
+  width: 56px;
+  height: 56px;
+}
