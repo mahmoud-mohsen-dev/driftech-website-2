@@ -1,6 +1,6 @@
 import FeaturesList from "../UI/FeaturesList";
 import "../../styles/small-components-styles.css";
-import Btn from "../UI/buttons/Btn";
+// import Btn from "../UI/buttons/Btn";
 import AutoLoanCalculatorForm from "../UI/forms/AutoLoanCalculatorForm";
 
 function AutoLoanListItem({
@@ -28,10 +28,10 @@ function AutoLoanListItem({
 }
 
 function AutoLoanCalculatorSection() {
-  const handlCalculation = () => {
-    // Logic to handle calculation can be added here
-    console.log("Calculate Your Loan button clicked");
-  };
+  // const handlCalculation = () => {
+  //   // Logic to handle calculation can be added here
+  //   console.log("Calculate Your Loan button clicked");
+  // };
 
   return (
     <section className="bg-gray-medium-300 py-[75px]">
