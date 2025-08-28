@@ -27,7 +27,7 @@ function Header() {
           Log In
         </NavLink>
         <a
-          href="#create-account"
+          href="/sign-up"
           className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal rounded-lg p-2.5 capitalize transition duration-200 ease-in"
         >
           Create Account

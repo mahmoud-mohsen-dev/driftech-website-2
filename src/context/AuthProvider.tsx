@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { AuthContext } from "./AuthContext";
 import type { AuthType } from "../types/authContextTypes";
+import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [auth, setAuth] = useState<AuthType>({
-    userEmail: "",
+    userPhoneNumber: "",
+    otpCode: null,
     accessToken: null,
   });
 

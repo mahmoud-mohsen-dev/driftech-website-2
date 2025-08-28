@@ -3,7 +3,7 @@ import Search from "../UI/Search";
 
 function HeroSection() {
   return (
-    <div className="min-h-screen bg-[url('../assets/backgrounds/3d-car-vibrant-city-night-1.png')] bg-cover bg-center pt-[calc(105px+75px)]">
+    <div className="min-h-screen bg-[url('../assets/backgrounds/3d-car-vibrant-city-night-1.png')] bg-cover bg-center py-5 pt-[calc(105px+75px)]">
       <section className="mx-auto h-full w-full max-w-[1221px]">
         <div className="text-foundation-gray-lighter font-inter flex max-w-[649px] flex-col items-start gap-12">
           <h1 className="font-semibold">

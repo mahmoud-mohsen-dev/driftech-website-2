@@ -14,9 +14,6 @@ export default function FilterRadioGroup() {
     { label: "3,000,001 - 4,000,000", value: "3,000,001" },
     { label: "4,000,001 - 5,000,000", value: "4,000,001" },
     { label: "5,000,001 - 6,000,000", value: "5,000,001" },
-    { label: "6,000,001 - 7,000,000", value: "6,000,001" },
-    { label: "5,000,001 - 6,000,000", value: "5,000,001" },
-    { label: "6,000,001 - 7,000,000", value: "6,000,001" },
   ];
 
   // Mouse drag scroll state
@@ -53,7 +50,7 @@ export default function FilterRadioGroup() {
       onMouseUp={handleMouseLeaveOrUp}
       onMouseMove={handleMouseMove}
     >
-      {options.map((option) => (
+      {options.map((option, i) => (
         <label
           key={option.value}
           className={`min-w-fit cursor-pointer rounded-lg px-4 py-2 text-sm font-medium transition select-none ${
@@ -65,7 +62,7 @@ export default function FilterRadioGroup() {
           <input
             type="radio"
             name="filter"
-            value={option.value}
+            value={option.value + i}
             checked={selected === option.value}
             onChange={() => setSelected(option.value)}
             className="hidden"

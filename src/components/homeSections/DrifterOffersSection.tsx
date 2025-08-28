@@ -26,19 +26,19 @@ function DrifterOffersSection() {
             title="Drift Trade"
             description="Easily trade in your old car for a new one."
             // linkHref="#"
-            key={"drifter-1"}
+            key={"drifter-2"}
           />
           <DrifterOfferCard
             title="Fleet Drift"
             description="Smart solutions for businesses and car fleets."
             // linkHref="#"
-            key={"drifter-1"}
+            key={"drifter-3"}
           />
           <DrifterOfferCard
             title="Drift & Save"
             description="Save more with our exclusive offers and deals."
             // linkHref="#"
-            key={"drifter-1"}
+            key={"drifter-4"}
           />
         </div>
         <div className="mt-9 flex items-center justify-center">

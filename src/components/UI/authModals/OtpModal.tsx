@@ -1,51 +1,112 @@
 import { Form, Input, Modal } from "antd";
 
-import type { GetProps } from "antd";
+import type { FormInstance, GetProps } from "antd";
 import Loader from "../Loader";
-import { useState } from "react";
-import { useForm } from "antd/es/form/Form";
+import { useEffect } from "react";
+import { useAuth } from "../../../hooks/useAuth";
+import { useToast } from "../../../hooks/useToast";
+import { useNavigate } from "react-router";
 
 type OTPProps = GetProps<typeof Input.OTP>;
 
 interface OtpModalProps {
   isModalOpen: boolean;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  addUserFormNameAndMail?: boolean;
   showModal: () => void;
+  otpModalIsloading: boolean;
+  setOtpModalIsloading: React.Dispatch<React.SetStateAction<boolean>>;
+  otpForm: FormInstance<any>;
+  handleModalOk: () => void;
+  handleModalCancel: () => void;
+  onResendOtp: () => void;
+  setIsUserRegisteredNewPhoneNumber?: React.Dispatch<
+    React.SetStateAction<boolean>
+  >;
 }
 
-const OtpModal = ({ isModalOpen, setIsModalOpen }: OtpModalProps) => {
-  const [loading, setLoading] = useState(false);
-  const [form] = useForm();
+const OtpModal = ({
+  isModalOpen,
+  otpModalIsloading,
+  setOtpModalIsloading,
+  otpForm,
+  handleModalOk,
+  handleModalCancel,
+  onResendOtp,
+  addUserFormNameAndMail = false,
+  setIsUserRegisteredNewPhoneNumber,
+}: OtpModalProps) => {
+  const { auth, setAuth } = useAuth();
+  const userPhoneNumber = auth.userPhoneNumber;
 
-  const handleOk = () => {
-    setIsModalOpen(false);
+  const { error } = useToast();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let timer: any;
+
+    if (isModalOpen) {
+      timer = setTimeout(() => {
+        const otpInput = otpForm.getFieldInstance("otp");
+        // console.log("otpInput", otpInput);
+        if (otpInput) {
+          otpInput?.focus?.();
+        }
+      }, 100);
+    }
+
+    return () => {
+      if (timer) clearTimeout(timer); // 👈 cleanup on unmount or when modal closes
+    };
+  }, [isModalOpen, otpForm]);
+
+  // This function is triggered when the user fully enters the OTP
+  const onOtpSubmit = async (OTP: string) => {
+    setOtpModalIsloading(true);
+
+    const inputOtp = !isNaN(Number(OTP)) ? Number(OTP) : null;
+    if (typeof inputOtp === "number" && auth.otpCode === inputOtp) {
+      setAuth((prevState) => ({ ...prevState, userPhoneNumber }));
+
+      console.log("OTP matched");
+      handleModalCancel();
+
+      if (setIsUserRegisteredNewPhoneNumber && !addUserFormNameAndMail) {
+        setIsUserRegisteredNewPhoneNumber(true);
+        return;
+      }
+
+      navigate("/");
+    } else {
+      error("Invalid OTP");
+      console.error("Invalid OTP");
+
+      setAuth((prevState) => ({
+        ...prevState,
+        userPhoneNumber: "",
+        accessToken: null,
+      }));
+
+      setTimeout(() => {
+        otpForm.resetFields();
+        setOtpModalIsloading(false);
+      }, 500);
+    }
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const onChange: OTPProps["onChange"] = (text) => {
-    console.log("onChange:", text);
-    setLoading(true);
-  };
-
-  const onInput: OTPProps["onInput"] = (value) => {
-    console.log("onInput:", value);
-  };
-
-  const sharedProps: OTPProps = {
-    onChange,
-    onInput,
+  const handleChange: OTPProps["onChange"] = (otp) => {
+    if (otp.length === 4) {
+      onOtpSubmit(otp);
+    }
   };
 
   return (
     <>
       <Modal
         open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        centered
+        onOk={handleModalOk}
+        onCancel={handleModalCancel}
+        centered={true}
         footer={null}
         closeIcon={null}
         className="otp-modal lg:min-w-[750px]"
@@ -69,24 +130,28 @@ const OtpModal = ({ isModalOpen, setIsModalOpen }: OtpModalProps) => {
                   className="h-[36.36px] w-[26.36px]"
                 />
                 <span className="text-black-default text-sm leading-[1.8125rem] font-medium break-all md:text-base lg:text-[1.1875rem]">
-                  salwalaa770@gmail.com
+                  {userPhoneNumber}
                 </span>
               </div>
-              <button className="text-foundation-red-normal min-h-full rounded-[0.3125rem] bg-neutral-300 px-[0.8125rem] text-[1.1875rem] leading-[1.8125rem] font-medium transition-colors duration-200 ease-in hover:bg-neutral-500 active:bg-neutral-300">
+              <button
+                className="text-foundation-red-normal hover:text-shadow-foundation-orange-normal min-h-full rounded-[0.3125rem] bg-neutral-300 px-[0.8125rem] text-[1.1875rem] leading-[1.8125rem] font-medium transition-colors duration-200 ease-in hover:bg-neutral-200 active:bg-neutral-300"
+                onClick={handleModalCancel}
+              >
                 Change
               </button>
             </div>
           </div>
           <div className="mx-auto w-fit">
-            <Form className="otp-form-holder" form={form}>
-              <Input.OTP
-                className="otp-input-holder"
-                length={6}
-                disabled={loading}
-                formatter={(str) => str.toUpperCase()}
-                autoFocus
-                {...sharedProps}
-              />
+            <Form className="otp-form-holder" form={otpForm}>
+              <Form.Item name="otp">
+                <Input.OTP
+                  className="otp-input-holder"
+                  length={4}
+                  disabled={otpModalIsloading}
+                  formatter={(str) => str.replace(/\D/g, "")} // 👈 only keep digits
+                  onChange={handleChange}
+                />
+              </Form.Item>
             </Form>
           </div>
           <div className="text-center">
@@ -97,12 +162,13 @@ const OtpModal = ({ isModalOpen, setIsModalOpen }: OtpModalProps) => {
             <button
               className="text-black-default active:text-black-default hover:text-foundation-red-normal mt-[0.5625rem] rounded-[0.25rem] border-none py-[0.5625rem] text-[1.0625rem] leading-[1.375rem] underline transition-colors duration-200 ease-in"
               type="button"
-              disabled={loading}
+              disabled={otpModalIsloading}
+              onClick={onResendOtp}
             >
               Resend the code via email
             </button>
           </div>
-          {loading && <Loader />}
+          {otpModalIsloading && <Loader />}
         </div>
       </Modal>
     </>
