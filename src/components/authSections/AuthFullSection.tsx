@@ -1,5 +1,5 @@
 import useOtpModal from "../../hooks/useOtpModal";
-import AuthHeaderSection from "./authHeaderSection";
+import AuthHeaderSection from "./AuthHeaderSection";
 import OtpModal from "../UI/authModals/OtpModal";
 import AuthFooterSection from "./AuthFooterSection";
 import AuthFormPhoneSection from "./AuthFormPhoneSection";
