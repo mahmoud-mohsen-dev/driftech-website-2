@@ -10,7 +10,6 @@ function About() {
     <>
       <Header />
       <main className="min-h-screen">
-        {/* <HeroSection /> */}
         <AboutHeroSection />
         <AboutMissionSection />
         <NavigateToContactUsSection />

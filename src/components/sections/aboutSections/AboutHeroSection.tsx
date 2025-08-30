@@ -1,10 +1,11 @@
+import bgImg from "../../../assets/backgrounds/metting-on-table-1.jpg";
+
 function AboutHeroSection() {
   return (
     <section
       className="relative h-screen bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage:
-          "url('/src/assets/backgrounds/metting-on-table-1.jpg')",
+        backgroundImage: `url(${bgImg})`,
       }}
     >
       {/* Overlay */}
