@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { ConfigProvider } from "antd";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="about" index element={<About />} />
 
           <Route element={<AuthLayout />}>
             <Route path="login" element={<Login />} />

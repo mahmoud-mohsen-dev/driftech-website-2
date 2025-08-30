@@ -1,21 +1,21 @@
-import Header from "../components/homeSections/Header";
-import HeroSection from "../components/homeSections/HeroSection";
-import Footer from "../components/homeSections/Footer";
-import CalculateLoanSection from "../components/homeSections/CalculateLoanSection";
-import DrifterOffersSection from "../components/homeSections/DrifterOffersSection";
-import TrustedPartnersSection from "../components/homeSections/TrustedPartnersSection";
-import AutoLoanCalculatorSection from "../components/homeSections/AutoLoanCalculatorSection";
+import Header from "../components/sections/Header";
+import HeroSection from "../components/sections/homeSections/HeroSection";
+import Footer from "../components/sections/Footer";
+import CalculateLoanSection from "../components/sections/homeSections/CalculateLoanSection";
+import DrifterOffersSection from "../components/sections/homeSections/DrifterOffersSection";
+import TrustedPartnersSection from "../components/sections/homeSections/TrustedPartnersSection";
+import AutoLoanCalculatorSection from "../components/sections/homeSections/AutoLoanCalculatorSection";
 
-import ContactUsSection from "../components/homeSections/ContactUsSection";
-import VehicleFinancingSection from "../components/homeSections/VehicleFinancingSection";
-import DriftechVlogs from "../components/homeSections/DriftechVlogs";
-import CarsByDownPaymentsSection from "../components/homeSections/CarsByDownPaymentsSection";
-import AppAdvertisementSection from "../components/homeSections/AppAdvertisementSection";
-import PurchaseTutorialSection from "../components/homeSections/PurchaseTutorialSection";
+import ContactUsSection from "../components/sections/homeSections/ContactUsSection";
+import VehicleFinancingSection from "../components/sections/homeSections/VehicleFinancingSection";
+import DriftechVlogs from "../components/sections/homeSections/DriftechVlogs";
+import CarsByDownPaymentsSection from "../components/sections/homeSections/CarsByDownPaymentsSection";
+import AppAdvertisementSection from "../components/sections/homeSections/AppAdvertisementSection";
+import PurchaseTutorialSection from "../components/sections/homeSections/PurchaseTutorialSection";
 
 function Home() {
   return (
-    <div className="">
+    <>
       <Header />
       <main>
         <HeroSection />
@@ -33,7 +33,7 @@ function Home() {
         <ContactUsSection />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

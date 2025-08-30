@@ -1,5 +1,5 @@
 import redCarBackgorund from "../assets/backgrounds/red-car-background-1.png";
-import AuthFullSection from "../components/authSections/AuthFullSection.tsx";
+import AuthFullSection from "../components/sections/authSections/AuthFullSection.tsx";
 
 function Login() {
   return (

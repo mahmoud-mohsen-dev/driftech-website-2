@@ -4,7 +4,7 @@ function ContactUsInfoCard() {
   const handleClick = () => {};
 
   return (
-    <div className="font-poppins shadow-dark-gray flex flex-col gap-4 rounded-xl px-[22px] py-[26px] xl:w-[569px]">
+    <div className="font-poppins shadow-dark-gray flex flex-col gap-4 place-self-end rounded-xl px-[22px] py-[26px] xl:w-[569px]">
       <h2 className="text-[30px] leading-[45px] font-semibold">
         <span className="contact-us-title-right text-gray-medium-900 font-semibold">
           Contact us

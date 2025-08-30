@@ -47,7 +47,7 @@ function Anchor({
     default:
       "duration-100 ease-linear transition-all flex items-center justify-center",
     defaultColors:
-      "bg-foundation-orange-normal text-neutral-0 hover:text-foundation-orange-normal hover:bg-neutral-0",
+      "bg-foundation-orange-normal text-neutral-0 hover:scale-95 active:bg-foundation-orange-dark hover:bg-foundation-orange-normal-hover-2",
     outlineForBgLightColors:
       "text-foundation-orange-normal border-foundation-orange-normal border-[1.5px] bg-transparent hover:border-foundation-brown-medium hover:text-foundation-brown-medium",
     outlineForBgDarkColors:

@@ -1,28 +1,51 @@
+/*  
+  Tailwind equivalent of my custom .container
+  w-[calc(100%-2rem)] mx-auto
+  sm:max-w-[38rem]
+  md:max-w-[46rem]
+  lg:max-w-[60.25rem]
+  xl:max-w-[76.25rem]
+  2xl:max-w-[88.125rem] 
+  3xl:max-w-[105rem]
+*/
+
 .container {
-  width: 100%;
+  width: calc(100% - 2rem);
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  @media (width >= 40rem /* 640px */) {
-    max-width: 40rem /* 640px */;
+@media (min-width: 48rem /* 768px */) {
+  /* md */
+  .container {
+    max-width: 46rem /* 736px */;
   }
+}
 
-  @media (width >= 48rem /* 768px */) {
-    max-width: 48rem /* 768px */;
-    margin: 0 auto;
+@media (min-width: 64rem /* 1024px */) {
+  /* lg */
+  .container {
+    max-width: 60.25rem /* 964px */;
   }
+}
 
-  @media (width >= 64rem /* 1024px */) {
-    max-width: 64rem /* 1024px */;
-    margin: 0 auto;
+@media (min-width: 80rem /* 1280px */) {
+  /* xl */
+  .container {
+    max-width: 76.25rem /* 1220px */;
   }
+}
 
-  @media (width >= 73.75rem /* 1180px */) {
-    max-width: 73.75rem /* 1180px */;
-    margin: 0 auto;
+@media (min-width: 103.125rem /* 1650px */) {
+  /* 2xl */
+  .container {
+    max-width: 88.125rem; /* 1410px */
   }
+}
 
-  @media (width >= 90rem /* 1440px */) {
-    /* max-width: 90rem 1440px; */
-    max-width: 73.75rem /* 1180px */;
-    margin: 0 auto;
+@media (min-width: 120rem /* 1920px */) {
+  /* 3xl */
+  .container {
+    max-width: 105rem; /* 1680px */
   }
 }

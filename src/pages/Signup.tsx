@@ -1,6 +1,6 @@
 import { useState } from "react";
 import redCarBackgorund from "../assets/backgrounds/red-car-background-2.png";
-import AuthFullSection from "../components/authSections/AuthFullSection.tsx";
+import AuthFullSection from "../components/sections/authSections/AuthFullSection.tsx";
 
 function Signup() {
   const [isUserRegisteredNewPhoneNumber, setIsUserRegisteredNewPhoneNumber] =

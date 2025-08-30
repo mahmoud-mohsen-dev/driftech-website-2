@@ -17,6 +17,10 @@
   --color-foundation-brown-medium: #701900;
 
   --color-foundation-orange-normal: #e73201;
+  --color-foundation-orange-normal-hover: #e13201;
+  --color-foundation-orange-normal-hover-2: #d95934;
+  --color-foundation-orange-dark: #bc2901;
+  --color-foundation-orange-lighter: #fff7f5;
   --color-foundation-orange-light: #ffebe6;
   --color-foundation-orange-light-hover: #fee1d9;
   --color-foundation-orange-light-active: #fdc1b0;
@@ -65,7 +69,7 @@
   --shadow-partner-image: 0px 3.21px 9.93px 0px rgba(113, 113, 113, 0.25);
   --shadow-dark-gray: 0px 4px 12px 0px rgba(113, 113, 113, 0.25);
   --shadow-black: 0px 0px 4.51px 0.4px rgba(0, 0, 0, 0.25);
-
+  --shadow-anchor: 0px 8px 18px -8px rgba(231, 50, 1, 0.69);
   --text-shadow-light-gray: 0px 5.36px 16.09px rgba(113, 113, 113, 0.25);
 
   /* Gradients */
@@ -91,6 +95,18 @@
     #000000 0%,
     #000000 89%,
     transparent 100%
+  );
+
+  --gradient-foundation-orange-hero-1: linear-gradient(
+    -109.253deg,
+    rgba(231, 50, 1, 73%) 0%,
+    rgba(88, 19, 0, 73%) 100%
+  );
+
+  --gradient-foundation-orange-contact-1: linear-gradient(
+    -132.955deg,
+    #e73201 0%,
+    #581300 100%
   );
 
   /* Fonts */
@@ -119,35 +135,47 @@
 
     Montserrat - Medium
  */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 103.125rem; /* 1650px */
+  --breakpoint-3xl: 120rem; /* 1920px */
 }
 
 @layer base {
   h1 {
-    @apply text-[48px] leading-[53px] font-bold;
+    /* Font Size: Minimum 32px, Maximum 48px. Line Height: Minimum 38px, Maximum 53px */
+    @apply text-[clamp(2rem,2.5vw+1.25rem,3rem)] leading-[clamp(2.375rem,2.5vw+1.75rem,3.3125rem)] font-bold;
   }
 
   h2 {
-    @apply text-[36px] font-semibold;
+    /* Font Size: Minimum 28px, Maximum 36px. Line Height: Minimum 34px, Maximum 42px */
+    @apply text-[clamp(1.75rem,1.5vw+1.25rem,2.25rem)] leading-[clamp(2.125rem,1.5vw+1.5rem,2.625rem)] font-semibold;
   }
 
   h3 {
-    @apply text-[24px] font-medium;
+    /* Font Size: Minimum 20px, Maximum 24px. Line Height: Minimum 26px, Maximum 30px */
+    @apply text-[clamp(1.25rem,1vw+1rem,1.5rem)] leading-[clamp(1.625rem,1vw+1.25rem,1.875rem)] font-medium;
   }
 
   h4 {
-    @apply text-[20px] font-medium;
+    /* Font Size: Minimum 18px, Maximum 20px. Line Height: Minimum 22px, Maximum 26px */
+    @apply text-[clamp(1.125rem,0.5vw+1rem,1.25rem)] leading-[clamp(1.375rem,0.5vw+1.125rem,1.625rem)] font-medium;
   }
 
   h5 {
-    @apply text-[14px] leading-[22px] font-normal;
+    /* Font Size: Minimum 12px, Maximum 14px. Line Height: Minimum 18px, Maximum 22px */
+    @apply text-[clamp(0.75rem,0.5vw+0.625rem,0.875rem)] leading-[clamp(1.125rem,0.5vw+0.875rem,1.375rem)] font-normal;
   }
 
   h6 {
-    @apply text-[12px] font-normal;
+    /* Font Size: Minimum 11px, Maximum 12px. Line Height: Minimum 16px, Maximum 18px */
+    @apply text-[clamp(0.6875rem,0.25vw+0.625rem,0.75rem)] leading-[clamp(1rem,0.25vw+0.75rem,1.125rem)] font-normal;
   }
 
   p {
-    @apply text-[16px] font-normal;
+    /* Font Size: Minimum 14px, Maximum 16px. Line Height: Minimum 20px, Maximum 24px */
+    @apply text-[clamp(0.875rem,0.5vw+0.75rem,1rem)] leading-[clamp(1.25rem,0.5vw+1rem,1.5rem)] font-normal;
   }
 
   button {
@@ -168,4 +196,12 @@
   background-clip: text;
   -webkit-text-fill-color: transparent; /* Needed for Safari/Chrome */
   color: transparent; /* Fallback */
+}
+
+.about-hero-overlay {
+  background: var(--gradient-foundation-orange-hero-1);
+}
+
+.contact-us-background {
+  background: var(--gradient-foundation-orange-contact-1);
 }

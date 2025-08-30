@@ -4,7 +4,6 @@ import type { FormInstance, GetProps } from "antd";
 import Loader from "../Loader";
 import { useEffect } from "react";
 import { useAuth } from "../../../hooks/useAuth";
-import { useToast } from "../../../hooks/useToast";
 import { useNavigate } from "react-router";
 
 type OTPProps = GetProps<typeof Input.OTP>;
@@ -22,6 +21,7 @@ interface OtpModalProps {
   setIsUserRegisteredNewPhoneNumber?: React.Dispatch<
     React.SetStateAction<boolean>
   >;
+  handleVerifyOtp: (inputOtpCode: number | null) => Promise<boolean>;
 }
 
 const OtpModal = ({
@@ -34,11 +34,10 @@ const OtpModal = ({
   onResendOtp,
   addUserFormNameAndMail = false,
   setIsUserRegisteredNewPhoneNumber,
+  handleVerifyOtp,
 }: OtpModalProps) => {
-  const { auth, setAuth } = useAuth();
+  const { auth } = useAuth();
   const userPhoneNumber = auth.userPhoneNumber;
-
-  const { error } = useToast();
 
   const navigate = useNavigate();
 
@@ -65,8 +64,12 @@ const OtpModal = ({
     setOtpModalIsloading(true);
 
     const inputOtp = !isNaN(Number(OTP)) ? Number(OTP) : null;
-    if (typeof inputOtp === "number" && auth.otpCode === inputOtp) {
-      setAuth((prevState) => ({ ...prevState, userPhoneNumber }));
+
+    const response = await handleVerifyOtp(inputOtp);
+    console.log("response", response);
+
+    if (response) {
+      // setAuth((prevState) => ({ ...prevState, userPhoneNumber }));
 
       console.log("OTP matched");
       handleModalCancel();
@@ -78,15 +81,6 @@ const OtpModal = ({
 
       navigate("/");
     } else {
-      error("Invalid OTP");
-      console.error("Invalid OTP");
-
-      setAuth((prevState) => ({
-        ...prevState,
-        userPhoneNumber: "",
-        accessToken: null,
-      }));
-
       setTimeout(() => {
         otpForm.resetFields();
         setOtpModalIsloading(false);

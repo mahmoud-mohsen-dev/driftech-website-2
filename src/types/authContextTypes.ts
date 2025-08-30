@@ -1,7 +1,7 @@
 export type AuthType = {
   userPhoneNumber: string;
   accessToken: string | null;
-  otpCode: number | null;
+  // otpCode: number | null;
 };
 
 export type AuthContextType = {

@@ -29,6 +29,6 @@
   background-color: var(--color-foundation-orange-normal);
 }
 
-a.active span {
+a.active + span {
   width: 100%;
 }

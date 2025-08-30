@@ -5,12 +5,15 @@ import { useForm } from "antd/es/form/Form";
 import { useToast } from "./useToast";
 import type { AxiosResponse } from "axios";
 import type {
-  OTPErrorResponse,
-  OTPSuccessResponse,
+  SendOTPErrorResponse,
+  SendOTPSuccessResponse,
+  VerifyOTPErrorResponse,
+  VerifyOTPSuccessResponse,
 } from "../types/otpResponseTypes";
 import axios from "../api/axios";
 
 const SEND_OTP = "api/auth/send-otp";
+const VERIFY_OTP = "api/auth/verify-otp";
 
 export default function useOtpModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,14 +52,15 @@ export default function useOtpModal() {
     console.log("phoneNumber", phoneNumber);
 
     try {
-      const response: AxiosResponse<OTPSuccessResponse | OTPErrorResponse> =
-        await axios.post(
-          SEND_OTP,
-          { phone: phoneNumber, isForgotPass: 1 },
-          {
-            headers: { "Content-Type": "application/json" },
-          },
-        );
+      const response: AxiosResponse<
+        SendOTPSuccessResponse | SendOTPErrorResponse
+      > = await axios.post(
+        SEND_OTP,
+        { phone: phoneNumber, isForgotPass: 1 },
+        {
+          headers: { "Content-Type": "application/json" },
+        },
+      );
       // ✅ Narrow by checking if "error" exists
       if ("error" in response.data) {
         const errorObj = response.data.error ?? {}; // ✅ fallback to empty object
@@ -67,17 +71,17 @@ export default function useOtpModal() {
 
       console.log(JSON.stringify(response?.data));
       const message = "message" in response.data ? response.data.message : null;
-      const OTPCode =
+      const ApiOTPCode =
         message === "OTP sent successfully."
           ? (response.data.otp_code ?? null)
           : null;
 
-      console.log("OTPCode");
-      console.log(OTPCode);
+      console.log("API OTPCode");
+      console.log(ApiOTPCode);
 
       setAuth({
         userPhoneNumber: phoneNumber,
-        otpCode: OTPCode,
+        // otpCode: null,
         accessToken: null,
       });
       showModal();
@@ -97,11 +101,77 @@ export default function useOtpModal() {
 
       setAuth({
         userPhoneNumber: "",
-        otpCode: null,
+        // otpCode: null,
         accessToken: null,
       });
 
       handleModalCancel();
+    }
+  };
+  const handleVerifyOtp = async (inputOtpCode: number | null) => {
+    console.log("phoneNumber", auth.userPhoneNumber);
+    console.log("otpCode", inputOtpCode);
+    setOtpModalIsloading(true);
+
+    try {
+      const response: AxiosResponse<
+        VerifyOTPSuccessResponse | VerifyOTPErrorResponse
+      > = await axios.post(
+        VERIFY_OTP,
+        { phone: auth.userPhoneNumber, otp_code: inputOtpCode },
+        {
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+      // ✅ Narrow by checking if "error" exists
+      if ("error" in response.data) {
+        const errorObj = response.data.error ?? {}; // ✅ fallback to empty object
+        const errorMessage =
+          Object.values(errorObj).flat().join(", ") || "Unknown error";
+        throw new Error(errorMessage);
+      }
+
+      console.log(JSON.stringify(response?.data));
+      const message = "message" in response.data ? response.data.message : null;
+      const isSuccessMessage =
+        message ===
+        "تم التحقق من الكود بنجاح. الرجاء تعيين كلمة المرور لإكمال التسجيل.";
+      const isUserIdFound =
+        typeof response?.data?.user_id === "number" ? true : false;
+      const isVerifiedOtp = isSuccessMessage && isUserIdFound;
+
+      console.log("message", message);
+      console.log("isSuccessMessage", isSuccessMessage);
+      console.log("isUserIdFound", isUserIdFound);
+      console.log("isVerifiedOtp", isVerifiedOtp);
+
+      if (isVerifiedOtp) {
+        // handleModalCancel();
+        return true;
+      }
+
+      error("Invalid OTP code.");
+      console.error("Invalid OTP code.");
+      console.log(response);
+      return false;
+    } catch (err: any) {
+      if (err?.response?.data?.error === "Invalid OTP code.") {
+        error("Invalid OTP code.");
+        console.error("Invalid OTP code.");
+        console.log(err);
+      } else {
+        error("OTP code timeout.");
+        console.error("OTP code timeout.");
+        console.log(err);
+      }
+
+      return false;
+    } finally {
+      setOtpModalIsloading(false);
+      setAuth((prevState) => ({
+        ...prevState,
+        accessToken: null,
+      }));
     }
   };
 
@@ -124,5 +194,6 @@ export default function useOtpModal() {
     onSendOtp,
     onResendOtp,
     userRef,
+    handleVerifyOtp,
   };
 }
