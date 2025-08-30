@@ -10,8 +10,8 @@ function CalculateLoanSection() {
 
   return (
     <section className="font-inter">
-      <div className="container flex items-center gap-[63.57px] py-20">
-        <div className="relative w-full">
+      <div className="container flex flex-col items-center gap-5 py-20 lg:flex-row lg:gap-[63.57px]">
+        <div className="relative mx-auto w-[90%] lg:w-full">
           <img
             src={shakeHands}
             alt="shake hands"

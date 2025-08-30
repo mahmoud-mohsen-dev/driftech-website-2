@@ -28,34 +28,34 @@ function TrustedPartnersSection() {
           </p>
         </div>
 
-        <div className="h-[576px] lg:w-[calc(50%-32px)] xl:grid xl:grid-cols-2 xl:grid-rows-2">
+        <div className="grid grid-cols-[80px_80px_80px_80px] grid-rows-1 gap-1 overflow-x-auto md:gap-4 xl:h-[576px] xl:w-[calc(50%-32px)] xl:grid-cols-2 xl:grid-rows-2">
           <img
             src={egbank}
             alt="EG Bank"
             width={271}
             height={271}
-            className="shadow-partner-image h-[271px] w-[271px] overflow-hidden rounded-[27.1px]"
+            className="shadow-partner-image h-[75px] w-[75px] overflow-hidden rounded-full xl:h-[271px] xl:w-[271px] xl:rounded-[27.1px]"
           />
           <img
             src={aman}
             alt="Aman"
             width={200}
             height={200}
-            className="h-[200px] w-[200px] overflow-hidden rounded-[27.1px] xl:relative xl:top-[114px] xl:left-[34px]"
+            className="shadow-partner-image h-[75px] w-[75px] overflow-hidden rounded-full bg-[#3baac5] xl:relative xl:top-[114px] xl:left-[34px] xl:h-[200px] xl:w-[200px] xl:rounded-[27.1px] xl:bg-transparent xl:shadow-none"
           />
           <img
             src={driveFinance}
             alt="Drive Finance"
             width={155}
             height={155}
-            className="h-[155px] w-[155px] overflow-hidden rounded-[27.1px] xl:relative xl:right-[-32px] xl:bottom-[48px] xl:place-self-end"
+            className="shadow-partner-image h-[75px] w-[75px] overflow-hidden rounded-full bg-[#555df4] xl:relative xl:right-[-32px] xl:bottom-[48px] xl:h-[155px] xl:w-[155px] xl:place-self-end xl:rounded-[27.1px] xl:bg-transparent xl:shadow-none"
           />
           <img
             src={aman}
             alt="Aman"
             width={200}
             height={200}
-            className="h-[200px] w-[200px] overflow-hidden rounded-[27.1px] xl:place-self-end"
+            className="shadow-partner-image h-[75px] w-[75px] overflow-hidden rounded-full bg-[#3baac5] xl:h-[200px] xl:w-[200px] xl:place-self-end xl:rounded-[27.1px] xl:bg-transparent xl:shadow-none"
           />
         </div>
       </div>

@@ -1,3 +1,4 @@
+import type { SwiperOptions } from "swiper/types";
 import type { CardsDataType } from "../../types/cardsSliderTypes";
 import ImageSlider from "./ImageSlider";
 
@@ -11,6 +12,7 @@ function SliderSection({
   addAfterHeading,
   isAVlogCard,
   slidesPerView,
+  breakpoints,
 }: {
   title: string;
   cardsData: CardsDataType;
@@ -21,6 +23,10 @@ function SliderSection({
   addAfterHeading?: boolean;
   isAVlogCard?: boolean;
   slidesPerView?: number;
+  breakpoints?: {
+    [width: number]: SwiperOptions;
+    [ratio: string]: SwiperOptions;
+  };
 }) {
   return (
     <section className={sectionClassName}>
@@ -36,6 +42,7 @@ function SliderSection({
           addAfterHeading={addAfterHeading}
           isAVlogCard={isAVlogCard}
           slidesPerView={slidesPerView}
+          breakpoints={breakpoints}
         />
       </div>
     </section>

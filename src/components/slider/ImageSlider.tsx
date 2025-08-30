@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
 import type { CardsDataType } from "../../types/cardsSliderTypes";
+import type { SwiperOptions } from "swiper/types";
 
 export default function ImageSlider({
   cardsData,
@@ -13,6 +14,7 @@ export default function ImageSlider({
   addAfterHeading = false,
   isAVlogCard = false,
   slidesPerView = 4,
+  breakpoints,
 }: {
   cardsData: CardsDataType;
   imagesClassName: string;
@@ -21,11 +23,16 @@ export default function ImageSlider({
   addAfterHeading?: boolean;
   isAVlogCard?: boolean;
   slidesPerView?: number;
+  breakpoints?: {
+    [width: number]: SwiperOptions;
+    [ratio: string]: SwiperOptions;
+  };
 }) {
   return (
     <>
       <Swiper
         slidesPerView={slidesPerView}
+        breakpoints={breakpoints}
         spaceBetween={spaceBetween}
         freeMode={true}
         pagination={{
@@ -53,7 +60,7 @@ export default function ImageSlider({
                     height={52}
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                   />
-                  <div className="absolute bottom-[14px] left-1/2 flex w-[347px] -translate-x-1/2 items-center justify-between px-4">
+                  <div className="absolute bottom-[14px] left-1/2 flex w-full -translate-x-1/2 items-center justify-between px-4">
                     <span className="font-poppins text-neutral-0 text-[22px] leading-[33px] font-medium">
                       {card.title}
                     </span>

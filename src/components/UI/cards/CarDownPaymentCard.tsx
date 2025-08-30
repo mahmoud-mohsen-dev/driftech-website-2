@@ -9,7 +9,7 @@ function CarDownPaymentCard() {
     <div className="font-poppins relative">
       <img src="/icons/modern-car.svg" alt="modern car" />
       {/*Card Header */}
-      <div className="absolute top-[24.72px] left-1/2 flex w-[330px] -translate-x-[50%] items-center justify-between">
+      <div className="absolute top-[24.72px] left-1/2 flex w-full -translate-x-[50%] items-center justify-between px-4 md:px-6">
         <Btn
           handleClick={handleFavorite}
           className="font-poppins rounded-[9.02px] p-[9.02px] text-[18.04px] leading-[27px] font-semibold capitalize"

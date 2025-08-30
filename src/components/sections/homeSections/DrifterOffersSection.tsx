@@ -15,7 +15,7 @@ function DrifterOffersSection() {
             and passion to the art of controlled chaos.
           </p>
         </div>
-        <div className="mt-[36px] flex w-full gap-8">
+        <div className="mt-[36px] grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <DrifterOfferCard
             title="Drift Now"
             description="Get your car instantly with flexible payment options."

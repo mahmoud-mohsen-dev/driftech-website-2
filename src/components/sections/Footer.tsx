@@ -16,11 +16,13 @@ function Footer() {
             </h5>
           </div>
           {/* <div className="w-full lg:grid lg:grid-cols-[1fr_1fr_306px] lg:gap-[38px]"> */}
-          <div className="flex w-full flex-col justify-between gap-[38px] lg:flex-row">
+          <div className="mt-[38px] flex w-full flex-col justify-between gap-[38px] lg:mt-0 lg:flex-row">
             {/* Footer links */}
             <div>
-              <h5 className="text-neutral-0 mb-[30px] uppercase">Company</h5>
-              <ul className="flex flex-col gap-4">
+              <h5 className="text-neutral-0 text- mb-[20px] uppercase lg:mb-[30px]">
+                Company
+              </h5>
+              <ul className="flex flex-col gap-2.5 lg:gap-4">
                 <FooterLink href="#">Cars</FooterLink>
                 <FooterLink href="#">Vlogs</FooterLink>
                 <FooterLink href="#">My Finance Status</FooterLink>
@@ -30,15 +32,17 @@ function Footer() {
             </div>
             {/* Additional links */}
             <div>
-              <h5 className="text-neutral-0 mb-[30px] uppercase">Company</h5>
-              <ul className="flex flex-col gap-4">
+              <h5 className="text-neutral-0 mb-[20px] uppercase lg:mb-[30px]">
+                Company
+              </h5>
+              <ul className="flex flex-col gap-2.5 lg:gap-4">
                 <FooterLink href="#">Help center</FooterLink>
                 <FooterLink href="#">How it works</FooterLink>
               </ul>
             </div>
             {/* Newsletter subscription */}
             <div>
-              <h5 className="text-neutral-0 mb-[30px] min-w-[306px] uppercase">
+              <h5 className="text-neutral-0 mb-[20px] min-w-[306px] uppercase lg:mb-[30px]">
                 Newsletter
               </h5>
               <form>
@@ -61,7 +65,7 @@ function Footer() {
 
               {/* Mobile Application*/}
               <div className="mt-[37px]">
-                <h5 className="text-neutral-0 mb-[30px] !leading-[18px] uppercase">
+                <h5 className="text-neutral-0 mb-[20px] !leading-[18px] uppercase lg:mb-[30px]">
                   Our Mobile App
                 </h5>
 

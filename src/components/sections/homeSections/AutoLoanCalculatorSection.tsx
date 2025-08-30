@@ -35,7 +35,7 @@ function AutoLoanCalculatorSection() {
 
   return (
     <section className="bg-gray-medium-300 py-[75px]">
-      <div className="container flex items-center justify-center gap-8">
+      <div className="container flex flex-col items-center justify-center gap-8 lg:flex-row">
         {/* Left Section */}
         <div className="font-inter">
           <h2 className="text-foundation-brown-darker text-[30px] leading-[36px] font-semibold">

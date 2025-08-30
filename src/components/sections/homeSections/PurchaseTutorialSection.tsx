@@ -6,7 +6,7 @@ import ServiceImage3 from "../../../assets/sections/services/service-3.png";
 function PurchaseTutorialSection() {
   return (
     <section>
-      <div className="container flex justify-center gap-[18px]">
+      <div className="container flex flex-col justify-center gap-[18px] xl:flex-row">
         {/* How to Get Your Car ? Section */}
         <div className="font-inter flex w-full flex-col items-start justify-center gap-3">
           <div className="flex items-center gap-[6px]">

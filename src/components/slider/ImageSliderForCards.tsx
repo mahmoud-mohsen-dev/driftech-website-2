@@ -14,7 +14,18 @@ export default function ImageSliderForCards({
   return (
     <>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={1.2}
+        breakpoints={{
+          440: {
+            slidesPerView: 1.5,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
         spaceBetween={spaceBetween}
         freeMode={true}
         pagination={{

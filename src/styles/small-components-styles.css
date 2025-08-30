@@ -19,6 +19,9 @@
   line-height: 19px;
 }
 
+.slider-cards img {
+  width: 100%;
+}
 .swiper-pagination-bullet-active {
   background-color: var(--color-foundation-orange-normal);
 }

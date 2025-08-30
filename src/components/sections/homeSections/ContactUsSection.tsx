@@ -3,7 +3,7 @@ import ContactUsInfoCard from "../../UI/cards/ContactUsInfoCard";
 function ContactUsSection() {
   return (
     <section className="pt-[126.63px] pb-[128px]">
-      <div className="container grid grid-cols-2 items-center gap-[2.1875rem]">
+      <div className="container grid grid-cols-1 items-center gap-[2.1875rem] lg:grid-cols-2">
         <div className="font-inter">
           <h2 className="contact-us-title-left text-[30px] leading-[36px] font-semibold">
             📞 Get in Touch

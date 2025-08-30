@@ -73,6 +73,29 @@ function DriftechVlogs() {
       imagesClassName="h-[519px] relative"
       spaceBetween={41}
       isAVlogCard={true}
+      slidesPerView={1.2}
+      breakpoints={{
+        320: {
+          slidesPerView: 1.075,
+          spaceBetween: 18,
+        },
+        440: {
+          slidesPerView: 1.3,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 41,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1280: {
+          slidesPerView: 3.5,
+        },
+        1440: {
+          slidesPerView: 4,
+        },
+      }}
     />
   );
 }

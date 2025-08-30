@@ -5,8 +5,8 @@ import mobileAppImage from "../../../assets/backgrounds/mobile-app-2.png";
 function AppAdvertisementSection() {
   return (
     <section className="font-inter py-[80px]">
-      <div className="container flex items-center xl:gap-8">
-        <div className="h-full">
+      <div className="container flex flex-col-reverse items-center xl:flex-row xl:gap-8">
+        <div className="mt-6 h-full xl:mt-0">
           <h2 className="text-foundation-brown-darker text-[30px] leading-[36px] font-semibold">
             Drive Home Your Dream Car with{" "}
             <span className="text-foundation-orange-normal block font-semibold">
@@ -36,7 +36,7 @@ function AppAdvertisementSection() {
             </FeaturesList>
           </ul>
 
-          <div className="mt-[36px] flex gap-[32px]">
+          <div className="mt-[36px] flex items-center gap-[32px] max-[380px]:flex-col">
             <DownloadApp
               image={{
                 src: "/icons/app-store.png",
@@ -61,7 +61,7 @@ function AppAdvertisementSection() {
           <img
             src={mobileAppImage}
             alt="mobile app photo"
-            className="min-w-[470px]"
+            className="min-w-full lg:min-w-[470px]"
             width={470}
           />
         </div>

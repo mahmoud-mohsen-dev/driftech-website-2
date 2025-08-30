@@ -5,7 +5,7 @@ function HeroSection() {
   return (
     <div className="min-h-dvh bg-[url('../assets/backgrounds/3d-car-vibrant-city-night-1.png')] bg-cover bg-center py-5 pt-[229px]">
       <section className="container h-full">
-        <div className="text-foundation-gray-lighter font-inter flex max-w-[649px] flex-col items-start gap-12">
+        <div className="text-foundation-gray-lighter font-inter flex flex-col items-center gap-12 text-center md:items-start md:text-start lg:max-w-[649px]">
           <h1 className="font-semibold">
             Drive Today, Pay Your Way, Enjoy Every Mile
           </h1>
@@ -14,12 +14,9 @@ function HeroSection() {
             flexible financing.
           </h3>
           <Search />
-          <div className="flex w-full items-center gap-[34.25px]">
-            <Anchor href="#">Start Quiz</Anchor>
-            {/* <Anchor href="#" variant="outline-for-bg-dark">
-              Create Account
-            </Anchor> */}
-          </div>
+          <Anchor href="#" className="mt-5 md:mt-0">
+            Start Quiz
+          </Anchor>
         </div>
       </section>
     </div>
