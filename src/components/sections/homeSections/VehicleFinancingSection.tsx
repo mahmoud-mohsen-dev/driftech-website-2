@@ -4,23 +4,19 @@ import SliderSection from "../../slider/SliderSection";
 
 function VehicleFinancingSection() {
   const VehicleFinancingImages = [
-    { src: carImage, alt: "carImage" },
-    { src: motorcycleImage, alt: "motorcycleImage" },
-    { src: carImage, alt: "carImage" },
-    { src: motorcycleImage, alt: "motorcycleImage" },
-    { src: carImage, alt: "carImage" },
-    { src: motorcycleImage, alt: "motorcycleImage" },
-    { src: carImage, alt: "carImage" },
-    { src: motorcycleImage, alt: "motorcycleImage" },
-    { src: carImage, alt: "carImage" },
-    { src: motorcycleImage, alt: "motorcycleImage" },
-    { src: carImage, alt: "carImage" },
-    { src: motorcycleImage, alt: "motorcycleImage" },
+    { imgSrc: carImage, imgAlt: "carImage" },
+    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
+    { imgSrc: carImage, imgAlt: "carImage" },
+    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
+    { imgSrc: carImage, imgAlt: "carImage" },
+    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
+    { imgSrc: carImage, imgAlt: "carImage" },
+    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
   ];
   return (
     <SliderSection
       title="Vehicle Financing"
-      images={VehicleFinancingImages}
+      cardsData={VehicleFinancingImages}
       addAfterHeading={true}
     />
   );

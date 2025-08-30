@@ -1,24 +1,26 @@
+import type { CardsDataType } from "../../types/cardsSliderTypes";
 import ImageSlider from "./ImageSlider";
 
 function SliderSection({
   title,
-  images,
+  cardsData,
   sectionClassName = "py-[80px]",
   imagesClassName = "h-[367px] w-full rounded-lg",
   spaceBetween,
-  children,
+  // children,
   addAfterHeading,
+  isAVlogCard,
+  slidesPerView,
 }: {
   title: string;
-  images: {
-    src: string;
-    alt: string;
-  }[];
+  cardsData: CardsDataType;
   sectionClassName?: string;
   imagesClassName?: string;
   spaceBetween?: number;
-  children?: React.ReactNode;
+  // children?: React.ReactNode;
   addAfterHeading?: boolean;
+  isAVlogCard?: boolean;
+  slidesPerView?: number;
 }) {
   return (
     <section className={sectionClassName}>
@@ -27,11 +29,13 @@ function SliderSection({
       </h2>
       <div className="mt-6">
         <ImageSlider
-          images={images}
+          cardsData={cardsData}
           imagesClassName={imagesClassName}
           spaceBetween={spaceBetween}
-          children={children}
+          // children={children}
           addAfterHeading={addAfterHeading}
+          isAVlogCard={isAVlogCard}
+          slidesPerView={slidesPerView}
         />
       </div>
     </section>

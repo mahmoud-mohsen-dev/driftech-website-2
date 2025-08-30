@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import AppLayout from "./layouts/AppLayout";
 import ContactUs from "./pages/ContactUs";
+import CarsVlogs from "./pages/CarsVlogs";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about-us" element={<About />} />
             <Route path="contact-us" element={<ContactUs />} />
+            <Route path="cars-vlogs" element={<CarsVlogs />} />
           </Route>
 
           <Route element={<AuthLayout />}>

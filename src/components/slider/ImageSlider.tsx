@@ -3,24 +3,29 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
+import type { CardsDataType } from "../../types/cardsSliderTypes";
 
 export default function ImageSlider({
-  images,
+  cardsData,
   imagesClassName,
   spaceBetween = 33,
-  children,
+  // children,
   addAfterHeading = false,
+  isAVlogCard = false,
+  slidesPerView = 4,
 }: {
-  images: { src: string; alt: string }[];
+  cardsData: CardsDataType;
   imagesClassName: string;
   spaceBetween?: number;
-  children?: React.ReactNode;
+  // children?: React.ReactNode;
   addAfterHeading?: boolean;
+  isAVlogCard?: boolean;
+  slidesPerView?: number;
 }) {
   return (
     <>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={slidesPerView}
         spaceBetween={spaceBetween}
         freeMode={true}
         pagination={{
@@ -30,16 +35,34 @@ export default function ImageSlider({
         className="mySwiper"
         style={{ paddingBottom: "50px" }}
       >
-        {images.map((image, index) => (
+        {cardsData.map((card, index) => (
           <SwiperSlide>
             <div className={`cursor-grab overflow-hidden ${imagesClassName}`}>
               <img
-                src={image.src}
-                alt={image.alt}
+                src={card.imgSrc}
+                alt={card.imgAlt}
                 key={index}
                 className="h-full w-full object-cover"
               />
-              {children}
+              {isAVlogCard && (
+                <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center">
+                  <img
+                    src="/icons/play-video.svg"
+                    alt="play video icon"
+                    width={52}
+                    height={52}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                  />
+                  <div className="absolute bottom-[14px] left-1/2 flex w-[347px] -translate-x-1/2 items-center justify-between px-4">
+                    <span className="font-poppins text-neutral-0 text-[22px] leading-[33px] font-medium">
+                      {card.title}
+                    </span>
+                    <span className="bg-gray-normal-opacity-80 font-poppins text-neutral-0 flex h-[24px] w-[65px] items-center justify-center rounded-full px-2.5 text-xs leading-[18px] font-normal">
+                      {card.time}
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
             {addAfterHeading && (
               <h2 className="font-poppins mt-5 text-[30px] leading-[44px] font-medium text-black">

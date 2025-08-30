@@ -10,10 +10,10 @@ export default function FilterRadioGroup() {
     { label: "900,001 - 1,000,000", value: "900,001" },
     { label: "1,000,001 - 1,500,000", value: "1,000,001" },
     { label: "1,500,001 - 2,000,000", value: "1,500,001" },
-    { label: "2,000,001 - 3,000,000", value: "2,000,001" },
-    { label: "3,000,001 - 4,000,000", value: "3,000,001" },
-    { label: "4,000,001 - 5,000,000", value: "4,000,001" },
-    { label: "5,000,001 - 6,000,000", value: "5,000,001" },
+    // { label: "4,000,001 - 5,000,000", value: "4,000,001" },
+    // { label: "5,000,001 - 6,000,000", value: "5,000,001" },
+    // { label: "4,000,001 - 5,000,000", value: "4,000,001" },
+    // { label: "5,000,001 - 6,000,000", value: "5,000,001" },
   ];
 
   // Mouse drag scroll state
@@ -41,14 +41,37 @@ export default function FilterRadioGroup() {
     containerRef.current.scrollLeft = scrollLeft - walk;
   };
 
+  // Touch Events (reusing same logic)
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    isDown = true;
+    if (containerRef.current) {
+      startX = e.touches[0].pageX - containerRef.current.offsetLeft;
+      scrollLeft = containerRef.current.scrollLeft;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDown || !containerRef.current) return;
+    const x = e.touches[0].pageX - containerRef.current.offsetLeft;
+    const walk = (x - startX) * 4;
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    isDown = false;
+  };
+
   return (
     <div
-      className="flex w-full items-center gap-4 overflow-hidden"
+      className="flex w-full items-center justify-center gap-4 overflow-y-hidden"
       ref={containerRef}
       onMouseDown={handleMouseDown}
       onMouseLeave={handleMouseLeaveOrUp}
       onMouseUp={handleMouseLeaveOrUp}
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {options.map((option, i) => (
         <label
