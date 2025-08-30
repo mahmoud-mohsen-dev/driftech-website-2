@@ -1,6 +1,4 @@
-import Header from "../components/sections/Header";
 import HeroSection from "../components/sections/homeSections/HeroSection";
-import Footer from "../components/sections/Footer";
 import CalculateLoanSection from "../components/sections/homeSections/CalculateLoanSection";
 import DrifterOffersSection from "../components/sections/homeSections/DrifterOffersSection";
 import TrustedPartnersSection from "../components/sections/homeSections/TrustedPartnersSection";
@@ -16,23 +14,19 @@ import PurchaseTutorialSection from "../components/sections/homeSections/Purchas
 function Home() {
   return (
     <>
-      <Header />
-      <main>
-        <HeroSection />
-        <CalculateLoanSection />
-        <DrifterOffersSection />
-        <TrustedPartnersSection />
-        <AutoLoanCalculatorSection />
+      <HeroSection />
+      <CalculateLoanSection />
+      <DrifterOffersSection />
+      <TrustedPartnersSection />
+      <AutoLoanCalculatorSection />
 
-        <CarsByDownPaymentsSection />
-        <AppAdvertisementSection />
-        <PurchaseTutorialSection />
+      <CarsByDownPaymentsSection />
+      <AppAdvertisementSection />
+      <PurchaseTutorialSection />
 
-        <VehicleFinancingSection />
-        <DriftechVlogs />
-        <ContactUsSection />
-      </main>
-      <Footer />
+      <VehicleFinancingSection />
+      <DriftechVlogs />
+      <ContactUsSection />
     </>
   );
 }

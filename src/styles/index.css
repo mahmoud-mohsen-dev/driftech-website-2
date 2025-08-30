@@ -39,6 +39,7 @@
   --color-neutral-25: #fffffc;
   --color-neutral-50: #f0f0f0;
   --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #f5fdff;
   --color-neutral-300: #f3f4f6;
   --color-neutral-500: #e5e7eb;
 
@@ -51,6 +52,8 @@
 
   /* Gray Medium Shades */
   --color-gray-medium-300: #f9f9f9;
+  --color-gray-medium-325: #fbfbfb;
+  --color-gray-medium-375: #e2e2e2;
   --color-gray-medium-400: #e4e4e7;
   --color-gray-medium-500: #d9d9d9;
   --color-gray-medium-600: #a1a1aa;
@@ -65,7 +68,8 @@
 
   /* Shadows */
   --shadow-custom: 0px 5px 10px 6px rgba(0, 0, 0, 0.12);
-  --shadow-drifter-card: 0px 4px 24px 0px rgba(169, 169, 169, 0.4);
+  --shadow-black-light: 0px 4px 24px 0px rgba(169, 169, 169, 0.4);
+  --shadow-drifter-card: 0px 4px 10px 0px rgba(0, 0, 0, 0.12);
   --shadow-partner-image: 0px 3.21px 9.93px 0px rgba(113, 113, 113, 0.25);
   --shadow-dark-gray: 0px 4px 12px 0px rgba(113, 113, 113, 0.25);
   --shadow-black: 0px 0px 4.51px 0.4px rgba(0, 0, 0, 0.25);
@@ -88,6 +92,11 @@
     #e73201 0%,
     #691701 70%,
     transparent 100%
+  );
+  --gradient-foundation-brown-4: linear-gradient(
+    90deg,
+    #e73201 0%,
+    #691701 70%
   );
 
   --gradient-black-fade: linear-gradient(
@@ -198,8 +207,23 @@
   color: transparent; /* Fallback */
 }
 
+.get-in-touch {
+  background: var(--gradient-foundation-brown-4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Needed for Safari/Chrome */
+  color: transparent; /* Fallback */
+}
+
 .about-hero-overlay {
   background: var(--gradient-foundation-orange-hero-1);
+}
+.contact-us-hero-overlay {
+  background: linear-gradient(
+    -109.253deg,
+    rgba(231, 50, 1, 73%) 0%,
+    rgba(88, 19, 0, 73%) 100%
+  );
 }
 
 .contact-us-background {

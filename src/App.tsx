@@ -1,11 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import AuthLayout from "./features/auth/AuthLayout";
+import AuthLayout from "./layouts/AuthLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { ConfigProvider } from "antd";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
+import AppLayout from "./layouts/AppLayout";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -54,8 +56,11 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
-          <Route index element={<Home />} />
-          <Route path="about" index element={<About />} />
+          <Route element={<AppLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about-us" element={<About />} />
+            <Route path="contact-us" element={<ContactUs />} />
+          </Route>
 
           <Route element={<AuthLayout />}>
             <Route path="login" element={<Login />} />

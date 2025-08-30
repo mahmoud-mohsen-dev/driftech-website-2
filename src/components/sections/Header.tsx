@@ -15,8 +15,8 @@ function Header() {
             <MyNavLink to="/">Home</MyNavLink>
             <MyNavLink to="/cars">Cars</MyNavLink>
             <MyNavLink to="/my-finance-status">My Finance Status</MyNavLink>
-            <MyNavLink to="/about">About</MyNavLink>
-            <MyNavLink to="/contact">Contact Us</MyNavLink>
+            <MyNavLink to="/about-us">About</MyNavLink>
+            <MyNavLink to="/contact-us">Contact Us</MyNavLink>
             <MyNavLink to="/vlogs">Vlogs</MyNavLink>
           </ul>
         </nav>
