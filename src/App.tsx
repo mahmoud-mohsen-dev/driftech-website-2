@@ -9,6 +9,7 @@ import About from "./pages/About";
 import AppLayout from "./layouts/AppLayout";
 import ContactUs from "./pages/ContactUs";
 import CarsVlogs from "./pages/CarsVlogs";
+import CarVlog from "./pages/carsVlog/CarVlog";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             <Route path="about-us" element={<About />} />
             <Route path="contact-us" element={<ContactUs />} />
             <Route path="cars-vlogs" element={<CarsVlogs />} />
+            <Route path="cars-vlogs/:vlogName" element={<CarVlog />} />
           </Route>
 
           <Route element={<AuthLayout />}>

@@ -28,6 +28,8 @@
 
   --color-foundation-red-normal: #e93550;
 
+  --color-foundation-gray-darkest: #323232;
+  --color-foundation-gray-darker: #2e2f32;
   --color-foundation-gray-normal: #838790;
   --color-foundation-gray-normal-hover: #767a82;
   --color-foundation-gray-normal-active: #3b3d41;
@@ -73,6 +75,7 @@
   --shadow-partner-image: 0px 3.21px 9.93px 0px rgba(113, 113, 113, 0.25);
   --shadow-dark-gray: 0px 4px 12px 0px rgba(113, 113, 113, 0.25);
   --shadow-black: 0px 0px 4.51px 0.4px rgba(0, 0, 0, 0.25);
+  --shadow-black-medium: 0px 0px 5px 0.4px rgba(0, 0, 0, 0.25);
   --shadow-anchor: 0px 8px 18px -8px rgba(231, 50, 1, 0.69);
   --text-shadow-light-gray: 0px 5.36px 16.09px rgba(113, 113, 113, 0.25);
 

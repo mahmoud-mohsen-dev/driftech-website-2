@@ -24,3 +24,17 @@ body:has(.ant-modal-mask) .auth-background-image {
   justify-content: center;
   align-items: center;
 }
+
+/* BreadCrumbs */
+.ant-breadcrumb ol {
+  align-items: center;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+.ant-breadcrumb a {
+  height: fit-content;
+  padding: 4px 10px;
+}

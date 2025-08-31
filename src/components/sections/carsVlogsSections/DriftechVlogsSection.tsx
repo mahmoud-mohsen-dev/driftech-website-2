@@ -7,54 +7,81 @@ import { v4 } from "uuid";
 function DriftechVlogsSection() {
   const driftechVlogsData = [
     {
+      id: 1,
+      name: "2025 Audi Review - 1",
+      slug: "2025-audi-review-1",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 2,
+      name: "2025 Audi Review - 2",
+      slug: "2025-audi-review-2",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 3,
+      name: "2025 Audi Review - 3",
+      slug: "2025-audi-review-3",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 4,
+      name: "2025 Audi Review - 4",
+      slug: "2025-audi-review-4",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 5,
+      name: "2025 Audi Review - 5",
+      slug: "2025-audi-review-5",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 6,
+      name: "2025 Audi Review - 6",
+      slug: "2025-audi-review-6",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 7,
+      name: "2025 Audi Review - 7",
+      slug: "2025-audi-review-7",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 8,
+      name: "2025 Audi Review - 8",
+      slug: "2025-audi-review-8",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
       time: "01:24",
     },
     {
+      id: 9,
+      name: "2025 Audi Review - 9",
+      slug: "2025-audi-review-9",
       imgSrc: carImage2,
       imgAlt: "carImage",
       title: "2025 Audi Review",
@@ -82,6 +109,7 @@ function DriftechVlogsSection() {
               imgAlt={card.imgAlt}
               title={card.title}
               time={card.time}
+              slug={card.slug}
             />
           ))}
         </div>
