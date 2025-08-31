@@ -1,23 +1,62 @@
 import { Button, Form, Input, type FormInstance, type InputRef } from "antd";
+// import { Link } from "react-router";
+// import { useAuth } from "../../../hooks/useAuth";
+// import { useToast } from "../../../hooks/useToast";
+// import { useNavigate } from "react-router";
 
-function AuthFormPhoneSection({
-  onFinish,
+function AuthRegisterForm({
+  handleFinish,
   userRef,
   buttonText,
   form,
 }: {
   form: FormInstance<any>;
-  onFinish: (values: any) => void;
+  handleFinish: (values: any) => void;
   userRef: React.Ref<InputRef>;
   buttonText: string;
 }) {
+  //   const { login } = useAuth();
+  // const { error, success, loading } = useToast();
+  // const navigate = useNavigate();
+
+  // const handleFinish = async (values: {
+  //   userPhoneNumber: string | undefined;
+  // }) => {
+  //   console.log("values", values);
+
+  //   try {
+  //     loading({ isLoading: true });
+  //     const response = await signup(values.userPhoneNumber);
+
+  //     if (response === null) {
+  //       error("Phone number or password is incorrect");
+  //       return;
+  //     }
+  //     if (!response) {
+  //       error("Login failed");
+  //       return;
+  //     }
+
+  //     success("You have successfully logged in!");
+  //     setTimeout(() => {
+  //       navigate("/");
+  //     }, 500); // half a second delay
+  //   } catch (e) {
+  //     console.log("error", e);
+  //     error("Login failed");
+  //     form.resetFields();
+  //   } finally {
+  //     loading({ isLoading: false });
+  //   }
+  // };
+
   return (
     <Form
       form={form}
       onFinishFailed={(e) => {
         console.log("onFinishFailed of signin form was triggered", e);
       }}
-      onFinish={onFinish}
+      onFinish={handleFinish}
       colon={false}
       requiredMark={false}
     >
@@ -49,7 +88,8 @@ function AuthFormPhoneSection({
             color: "var(--color-foundation-brown-normal)",
             minHeight: "77.33px",
             borderRadius: "8px",
-            border: "1.76px solid var(--color-foundation-gray-normal)",
+            borderWidth: "1.76px",
+            // border: "1.76px solid var(--color-foundation-gray-normal)",
             padding: "16px",
             fontSize: "20px",
             lineHeight: "24px",
@@ -58,10 +98,11 @@ function AuthFormPhoneSection({
           ref={userRef}
         />
       </Form.Item>
+
       <Button
         type="primary"
         htmlType="submit"
-        className="min-h-[56px] w-full cursor-pointer text-2xl leading-[56px] font-medium capitalize"
+        className="mt-0 min-h-[56px] w-full cursor-pointer text-2xl leading-[56px] font-medium capitalize"
       >
         {buttonText}
       </Button>
@@ -69,4 +110,4 @@ function AuthFormPhoneSection({
   );
 }
 
-export default AuthFormPhoneSection;
+export default AuthRegisterForm;

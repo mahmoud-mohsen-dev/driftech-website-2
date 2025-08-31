@@ -1,6 +1,7 @@
 import FilterRadioGroup from "../../UI/forms/FilterRadioGroup";
 import ImageSliderForCards from "../../slider/ImageSliderForCards";
 import CarDownPaymentCard from "../../UI/cards/CarDownPaymentCard";
+import { Link } from "react-router";
 
 function CarsByDownPaymentsSection() {
   return (
@@ -11,8 +12,8 @@ function CarsByDownPaymentsSection() {
             Cars by down payments
           </h1>
 
-          <a
-            href={"#"}
+          <Link
+            to={"cars"}
             className="flex items-center gap-[0.6875rem] hover:underline"
           >
             <span className="text-black-medium text-[1.25rem] leading-[1.875rem] font-medium">
@@ -24,7 +25,7 @@ function CarsByDownPaymentsSection() {
               width={16}
               height={32}
             />
-          </a>
+          </Link>
         </div>
 
         <FilterRadioGroup />

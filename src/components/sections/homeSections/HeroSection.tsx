@@ -1,4 +1,4 @@
-import Anchor from "../../UI/buttons/Anchor";
+import Btn from "../../UI/buttons/Btn";
 import Search from "../../UI/Search";
 
 function HeroSection() {
@@ -14,9 +14,13 @@ function HeroSection() {
             flexible financing.
           </h3>
           <Search />
-          <Anchor href="#" className="mt-5 md:mt-0">
+          <Btn
+            to="quiz"
+            className="mt-5 rounded-lg md:mt-0"
+            variant="for-bg-dark-without-border"
+          >
             Start Quiz
-          </Anchor>
+          </Btn>
         </div>
       </section>
     </div>

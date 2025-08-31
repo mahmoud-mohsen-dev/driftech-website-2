@@ -4,14 +4,30 @@ import SliderSection from "../../slider/SliderSection";
 
 function VehicleFinancingSection() {
   const VehicleFinancingImages = [
-    { imgSrc: carImage, imgAlt: "carImage" },
-    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
-    { imgSrc: carImage, imgAlt: "carImage" },
-    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
-    { imgSrc: carImage, imgAlt: "carImage" },
-    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
-    { imgSrc: carImage, imgAlt: "carImage" },
-    { imgSrc: motorcycleImage, imgAlt: "motorcycleImage" },
+    { imgSrc: carImage, imgAlt: "carImage", slug: "/finace/car-1" },
+    {
+      imgSrc: motorcycleImage,
+      imgAlt: "motorcycleImage",
+      slug: "/finace/car-1",
+    },
+    { imgSrc: carImage, imgAlt: "carImage", slug: "/finace/car-1" },
+    {
+      imgSrc: motorcycleImage,
+      imgAlt: "motorcycleImage",
+      slug: "/finace/car-1",
+    },
+    { imgSrc: carImage, imgAlt: "carImage", slug: "/finace/car-1" },
+    {
+      imgSrc: motorcycleImage,
+      imgAlt: "motorcycleImage",
+      slug: "/finace/car-1",
+    },
+    { imgSrc: carImage, imgAlt: "carImage", slug: "/finace/car-1" },
+    {
+      imgSrc: motorcycleImage,
+      imgAlt: "motorcycleImage",
+      slug: "/finace/car-1",
+    },
   ];
   return (
     <SliderSection

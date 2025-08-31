@@ -10,6 +10,9 @@ import AppLayout from "./layouts/AppLayout";
 import ContactUs from "./pages/ContactUs";
 import CarsVlogs from "./pages/CarsVlogs";
 import CarVlog from "./pages/carsVlog/CarVlog";
+import TypeOfDrifters from "./pages/TypeOfDrifters";
+import ScrollToTop from "./components/UI/ScrollToTop";
+import ScrollToHashElement from "./components/UI/ScrollToHashElement";
 
 function App() {
   return (
@@ -57,6 +60,8 @@ function App() {
       }}
     >
       <BrowserRouter>
+        <ScrollToTop />
+        <ScrollToHashElement />
         <Routes>
           <Route element={<AppLayout />}>
             <Route index element={<Home />} />
@@ -64,6 +69,7 @@ function App() {
             <Route path="contact-us" element={<ContactUs />} />
             <Route path="cars-vlogs" element={<CarsVlogs />} />
             <Route path="cars-vlogs/:vlogName" element={<CarVlog />} />
+            <Route path="type-of-drifters" element={<TypeOfDrifters />} />
           </Route>
 
           <Route element={<AuthLayout />}>

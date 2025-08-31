@@ -1,16 +1,17 @@
 import Btn from "../../UI/buttons/Btn";
 import shakeHands from "../../../assets/sections/shake-hands.jpg";
 import FeaturesList from "../../UI/FeaturesList";
+// import Anchor from "../../UI/buttons/Anchor";
 
 function CalculateLoanSection() {
-  const handleClick = () => {
-    // Logic to calculate the loan can be added here
-    console.log("Calculate Loan button clicked");
-  };
+  // const handleClick = () => {
+  //   // Logic to calculate the loan can be added here
+  //   console.log("Calculate Loan button clicked");
+  // };
 
   return (
     <section className="font-inter">
-      <div className="container flex flex-col items-center gap-5 py-20 lg:flex-row lg:gap-[63.57px]">
+      <div className="container flex flex-col-reverse items-center gap-10 py-20 lg:flex-row lg:gap-[63.57px]">
         <div className="relative mx-auto w-[90%] lg:w-full">
           <img
             src={shakeHands}
@@ -54,9 +55,15 @@ function CalculateLoanSection() {
               Competitive rates starting at 2.9% APR
             </FeaturesList>
           </ul>
-          <Btn handleClick={handleClick} className="rounded-lg">
+          <Btn to="/#auto-loan-calculator" className="rounded-lg">
             Financing
           </Btn>
+          {/* <a
+            href="/#auto-loan-calculator"
+            className="bg-foundation-orange-normal text-neutral-0 hover:text-foundation-orange-normal hover:bg-neutral-0 hover:border-foundation-orange-normal flex h-[53px] w-[210px] items-center justify-center rounded-[9.47px] border border-dashed border-transparent p-3 font-[inherit] leading-[17.8px] font-medium capitalize transition-all duration-100 ease-linear"
+          >
+            Financing
+          </a> */}
         </div>
       </div>
     </section>

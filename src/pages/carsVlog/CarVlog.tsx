@@ -6,7 +6,6 @@ import RelatedVlogsSection from "../../components/sections/carVlogSection/Relate
 
 function CarVlog() {
   const { vlogName } = useParams<{ vlogName: string }>();
-  //   const vlogName = "Vlog Name";
   const items = [
     {
       title: <Link to="/">Home</Link>,

@@ -9,7 +9,10 @@ function AutoLoanCalculatorForm() {
   const handleSubmit = () => {};
 
   return (
-    <form className="font-poppins bg-neutral-0 shadow-partner-image flex flex-col gap-[19.85px] rounded-[9.93px] px-8 py-7">
+    <form
+      id="auto-loan-calculator"
+      className="font-poppins bg-neutral-0 shadow-partner-image flex flex-col gap-[19.85px] rounded-[9.93px] px-8 py-7"
+    >
       <div>
         {/* <div className="" /> */}
         <h3 className="border-foundation-orange-normal text- text-black-medium border-l-4 pl-2 text-[20px] font-medium capitalize">
@@ -55,7 +58,7 @@ function AutoLoanCalculatorForm() {
         15.576 LE/60
       </h4>
 
-      <div className="flex w-full items-center gap-[26px]">
+      <div className="flex w-full items-center gap-2.5 md:gap-[26px]">
         <Btn
           handleClick={handleReset}
           variant="outline-for-bg-light"

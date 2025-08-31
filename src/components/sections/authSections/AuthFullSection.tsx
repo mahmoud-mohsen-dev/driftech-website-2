@@ -2,10 +2,10 @@ import useOtpModal from "../../../hooks/useOtpModal";
 import AuthHeaderSection from "./AuthHeaderSection";
 import OtpModal from "../../UI/authModals/OtpModal";
 import AuthFooterSection from "./AuthFooterSection";
-import AuthFormPhoneSection from "./AuthFormPhoneSection";
+import AuthFormLogin from "./AuthFormLogin";
+import AuthFormRegister from "./AuthFormRegister";
 import { useForm } from "antd/es/form/Form";
-import AuthFormNameAndMailSection from "./AuthFormNameAndMailSection";
-import { useNavigate } from "react-router";
+import AuthFormCompleteUserProfileSection from "./AuthFormCompleteUserProfileSection";
 
 function AuthFullSection({
   imgSrc,
@@ -16,8 +16,9 @@ function AuthFullSection({
   authFooterSectionLinkHref,
   authFooterSectionLinkText,
   buttonText,
-  addUserFormNameAndMail = false,
-  setIsUserRegisteredNewPhoneNumber,
+  isCompleteUserForm = false,
+  isLoginForm = false,
+  setIsCompleteUserForm,
 }: {
   imgSrc: string;
   altText: string;
@@ -27,10 +28,9 @@ function AuthFullSection({
   authFooterSectionLinkHref: string;
   authFooterSectionLinkText: string;
   buttonText: string;
-  addUserFormNameAndMail?: boolean;
-  setIsUserRegisteredNewPhoneNumber?: React.Dispatch<
-    React.SetStateAction<boolean>
-  >;
+  isLoginForm?: boolean;
+  isCompleteUserForm?: boolean;
+  setIsCompleteUserForm?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const {
     isModalOpen,
@@ -47,11 +47,6 @@ function AuthFullSection({
   } = useOtpModal();
 
   const [authForm] = useForm();
-  const navigate = useNavigate();
-
-  const navigateToHomePage = () => {
-    navigate("/");
-  };
 
   return (
     <main
@@ -60,43 +55,51 @@ function AuthFullSection({
       // style={{ backgroundImage: `url(${imgSrc})` }}
     >
       <div
-        className={`mx-5 ${addUserFormNameAndMail ? "mt-[6.25rem]" : "mt-[12.5rem]"} flex flex-col gap-9 lg:col-span-4 lg:col-start-2 lg:mx-0 lg:max-w-[450px] xl:col-span-5 xl:col-start-2 xl:max-w-[564px]`}
+        className={`mx-5 ${isCompleteUserForm ? "mt-[6.25rem]" : "mt-[12.5rem]"} flex flex-col gap-9 lg:col-span-4 lg:col-start-2 lg:mx-0 lg:max-w-[450px] xl:col-span-5 xl:col-start-2 xl:max-w-[564px]`}
       >
         <AuthHeaderSection
           title={authHeaderSectionTitle}
           description={authHeaderSectionDescription}
         />
 
-        {addUserFormNameAndMail ? (
-          <AuthFormNameAndMailSection
+        {isLoginForm ? (
+          <AuthFormLogin
             form={authForm}
-            onFinish={navigateToHomePage}
-            // userRef={userRef}
+            userRef={userRef}
             buttonText={buttonText}
           />
         ) : (
           <>
-            <AuthFormPhoneSection
-              form={authForm}
-              onFinish={onSendOtp}
-              userRef={userRef}
-              buttonText={buttonText}
-            />
-            <OtpModal
-              isModalOpen={isModalOpen}
-              showModal={showModal}
-              otpModalIsloading={otpModalIsloading}
-              setOtpModalIsloading={setOtpModalIsloading}
-              otpForm={otpForm}
-              handleModalOk={handleModalOk}
-              handleModalCancel={handleModalCancel}
-              onResendOtp={onResendOtp}
-              addUserFormNameAndMail={addUserFormNameAndMail}
-              setIsUserRegisteredNewPhoneNumber={
-                setIsUserRegisteredNewPhoneNumber
-              }
-              handleVerifyOtp={handleVerifyOtp}
-            />
+            {/* Sign up form */}
+            {isCompleteUserForm ? (
+              <AuthFormCompleteUserProfileSection
+                form={authForm}
+                userRef={userRef}
+                buttonText={buttonText}
+              />
+            ) : (
+              <>
+                <AuthFormRegister
+                  form={authForm}
+                  handleFinish={onSendOtp}
+                  userRef={userRef}
+                  buttonText={buttonText}
+                />
+                <OtpModal
+                  isModalOpen={isModalOpen}
+                  showModal={showModal}
+                  otpModalIsloading={otpModalIsloading}
+                  setOtpModalIsloading={setOtpModalIsloading}
+                  otpForm={otpForm}
+                  handleModalOk={handleModalOk}
+                  handleModalCancel={handleModalCancel}
+                  onResendOtp={onResendOtp}
+                  addUserFormNameAndMail={isCompleteUserForm}
+                  setIsCompleteUserForm={setIsCompleteUserForm}
+                  handleVerifyOtp={handleVerifyOtp}
+                />
+              </>
+            )}
           </>
         )}
 

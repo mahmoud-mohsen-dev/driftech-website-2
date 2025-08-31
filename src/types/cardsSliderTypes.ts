@@ -3,4 +3,5 @@ export type CardsDataType = {
   imgAlt: string;
   title?: string;
   time?: string;
+  slug?: string;
 }[];

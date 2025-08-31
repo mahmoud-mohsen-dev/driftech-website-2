@@ -56,7 +56,7 @@ export default function useOtpModal() {
         SendOTPSuccessResponse | SendOTPErrorResponse
       > = await axios.post(
         SEND_OTP,
-        { phone: phoneNumber, isForgotPass: 1 },
+        { phone: phoneNumber, isForgotPass: 0 }, // isForgotPass: 1 for forgot password && 0 for register
         {
           headers: { "Content-Type": "application/json" },
         },
@@ -75,15 +75,19 @@ export default function useOtpModal() {
         message === "OTP sent successfully."
           ? (response.data.otp_code ?? null)
           : null;
+      const userId =
+        "user_id" in response.data ? response?.data?.["user_id"] : null;
 
       console.log("API OTPCode");
       console.log(ApiOTPCode);
+      console.log("User Id");
+      console.log(userId);
 
-      setAuth({
-        userPhoneNumber: phoneNumber,
-        // otpCode: null,
-        accessToken: null,
-      });
+      setAuth((prevState) => ({
+        ...prevState,
+        tempUserPhoneNumber: phoneNumber,
+        user: { id: userId },
+      }));
       showModal();
     } catch (err: any) {
       if (
@@ -99,17 +103,19 @@ export default function useOtpModal() {
         console.log(err);
       }
 
-      setAuth({
-        userPhoneNumber: "",
+      setAuth((prevState) => ({
+        ...prevState,
+        tempUserPhoneNumber: "",
+        user: null,
         // otpCode: null,
-        accessToken: null,
-      });
+        // accessToken: null,
+      }));
 
       handleModalCancel();
     }
   };
   const handleVerifyOtp = async (inputOtpCode: number | null) => {
-    console.log("phoneNumber", auth.userPhoneNumber);
+    console.log("phoneNumber", auth.tempUserPhoneNumber);
     console.log("otpCode", inputOtpCode);
     setOtpModalIsloading(true);
 
@@ -118,7 +124,7 @@ export default function useOtpModal() {
         VerifyOTPSuccessResponse | VerifyOTPErrorResponse
       > = await axios.post(
         VERIFY_OTP,
-        { phone: auth.userPhoneNumber, otp_code: inputOtpCode },
+        { phone: auth.tempUserPhoneNumber, otp_code: inputOtpCode },
         {
           headers: { "Content-Type": "application/json" },
         },
@@ -179,7 +185,7 @@ export default function useOtpModal() {
     handleSendOtp(formValues.userPhoneNumber);
   };
   const onResendOtp = () => {
-    handleSendOtp(auth.userPhoneNumber);
+    handleSendOtp(auth.tempUserPhoneNumber);
   };
 
   return {

@@ -27,7 +27,7 @@
 }
 
 /* Nav Link Styles */
-.menu-item:hover span {
+.menu-item a:hover + span {
   width: 100%;
   background-color: var(--color-foundation-orange-normal);
 }

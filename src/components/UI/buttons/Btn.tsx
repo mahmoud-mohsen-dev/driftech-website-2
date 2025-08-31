@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 function Btn({
   children,
   variant = "default",
@@ -6,14 +8,20 @@ function Btn({
   width = "w-[210px]",
   height = "h-[53px]",
   type = "button",
+  to,
 }: {
   children: React.ReactNode;
-  variant?: "default" | "outline-for-bg-light" | "outline-for-bg-dark";
+  variant?:
+    | "default"
+    | "outline-for-bg-light"
+    | "outline-for-bg-dark"
+    | "for-bg-dark-without-border";
   handleClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   width?: string;
   height?: string;
   type?: "button" | "submit" | "reset";
+  to?: string;
 }) {
   const styles = {
     default:
@@ -24,6 +32,8 @@ function Btn({
       "text-foundation-orange-normal border-foundation-orange-normal border-[1.5px] bg-transparent hover:border-dashed",
     outlineForBgDarkColors:
       "text-neutral-0 border-foundation-orange-light border-[1.5px] bg-transparent hover:border-foundation-orange-normal hover:text-foundation-orange-normal",
+    forBgDarkWithoutBorderColors:
+      "text-neutral-0 bg-foundation-orange-normal hover:bg-foundation-orange-normal-hover active:bg-foundation-orange-normal",
   };
 
   let finalStyles = "";
@@ -34,6 +44,19 @@ function Btn({
     finalStyles = styles.outlineForBgLightColors;
   } else if (variant === "outline-for-bg-dark") {
     finalStyles = styles.outlineForBgDarkColors;
+  } else if (variant === "for-bg-dark-without-border") {
+    finalStyles = styles.forBgDarkWithoutBorderColors;
+  }
+
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className={`${width} ${height} ${styles.default} ${finalStyles} ${className}`}
+      >
+        {children}
+      </Link>
+    );
   }
 
   return (

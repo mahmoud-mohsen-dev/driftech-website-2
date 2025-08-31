@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 function FooterLink({
   children,
   href = "#",
@@ -7,12 +9,12 @@ function FooterLink({
 }) {
   return (
     <li>
-      <a
-        href={href}
+      <Link
+        to={href}
         className="font-poppins text-[13px] text-neutral-50 capitalize transition-all duration-100 ease-in hover:text-neutral-300 hover:underline"
       >
         {children}
-      </a>
+      </Link>
     </li>
   );
 }

@@ -23,11 +23,14 @@ function Footer() {
                 Company
               </h5>
               <ul className="flex flex-col gap-2.5 lg:gap-4">
-                <FooterLink href="#">Cars</FooterLink>
-                <FooterLink href="#">Vlogs</FooterLink>
-                <FooterLink href="#">My Finance Status</FooterLink>
-                <FooterLink href="#">About</FooterLink>
-                <FooterLink href="#">Contact</FooterLink>
+                <FooterLink href="/">Cars</FooterLink>
+                <FooterLink href="cars-vlogs">Vlogs</FooterLink>
+                <FooterLink href="/">My Finance Status</FooterLink>
+                <FooterLink href="about-us">About</FooterLink>
+                <FooterLink href="contact-us">Contact</FooterLink>
+                <FooterLink href="type-of-drifters">
+                  Type of Drifters
+                </FooterLink>
               </ul>
             </div>
             {/* Additional links */}
@@ -36,8 +39,8 @@ function Footer() {
                 Company
               </h5>
               <ul className="flex flex-col gap-2.5 lg:gap-4">
-                <FooterLink href="#">Help center</FooterLink>
-                <FooterLink href="#">How it works</FooterLink>
+                <FooterLink href="/">Help center</FooterLink>
+                <FooterLink href="/">How it works</FooterLink>
               </ul>
             </div>
             {/* Newsletter subscription */}

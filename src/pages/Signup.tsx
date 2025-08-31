@@ -3,21 +3,21 @@ import redCarBackgorund from "../assets/backgrounds/red-car-background-2.png";
 import AuthFullSection from "../components/sections/authSections/AuthFullSection.tsx";
 
 function Signup() {
-  const [isUserRegisteredNewPhoneNumber, setIsUserRegisteredNewPhoneNumber] =
-    useState(false);
+  const [isCompleteUserForm, setIsCompleteUserForm] = useState(false);
 
   return (
     <AuthFullSection
       imgSrc={redCarBackgorund}
       altText="red car background"
       authHeaderSectionTitle="Create your account"
-      authHeaderSectionDescription="Join us for an exceptional experience."
+      authHeaderSectionDescription="Join us today and unlock all features in just a few steps."
       authFooterSectionLabel="Do you have an account?"
       authFooterSectionLinkHref="/login"
       authFooterSectionLinkText="Login"
       buttonText="Create Account"
-      addUserFormNameAndMail={isUserRegisteredNewPhoneNumber}
-      setIsUserRegisteredNewPhoneNumber={setIsUserRegisteredNewPhoneNumber}
+      isCompleteUserForm={isCompleteUserForm}
+      setIsCompleteUserForm={setIsCompleteUserForm}
+      isLoginForm={false}
     />
   );
 }

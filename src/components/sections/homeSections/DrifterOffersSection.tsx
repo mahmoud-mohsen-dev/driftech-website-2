@@ -1,4 +1,4 @@
-import Anchor from "../../UI/buttons/Anchor";
+import Btn from "../../UI/buttons/Btn";
 import DrifterOfferCard from "../../UI/cards/DrifferOfferCard";
 
 function DrifterOffersSection() {
@@ -42,9 +42,13 @@ function DrifterOffersSection() {
           />
         </div>
         <div className="mt-9 flex items-center justify-center">
-          <Anchor href="#" className="rounded-lg">
+          <Btn
+            to="type-of-drifters"
+            className="rounded-lg"
+            width="w-full md:w-[210px]"
+          >
             View More
-          </Anchor>
+          </Btn>
         </div>
       </div>
     </section>

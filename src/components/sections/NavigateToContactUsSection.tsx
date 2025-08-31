@@ -1,4 +1,5 @@
-import Anchor from "../UI/buttons/Anchor";
+// import Anchor from "../UI/buttons/Anchor";
+import Btn from "../UI/buttons/Btn";
 
 function NavigateToContactUsSection() {
   return (
@@ -13,13 +14,13 @@ function NavigateToContactUsSection() {
             you’re looking for reach out anytime!
           </p>
         </div>
-        <Anchor
-          href="/contact-us"
+        <Btn
+          to="contact-us"
           className="font-poppins rounded-lg text-[clamp(0.875rem,0.5vw+0.75rem,1rem)] leading-[clamp(1.25rem,0.5vw+1rem,1.5rem)] font-semibold"
           width="w-[145px] lg:w-[10.9375rem]"
         >
           Contact us
-        </Anchor>
+        </Btn>
       </div>
     </section>
   );

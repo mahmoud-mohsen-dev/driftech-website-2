@@ -18,9 +18,7 @@ interface OtpModalProps {
   handleModalOk: () => void;
   handleModalCancel: () => void;
   onResendOtp: () => void;
-  setIsUserRegisteredNewPhoneNumber?: React.Dispatch<
-    React.SetStateAction<boolean>
-  >;
+  setIsCompleteUserForm?: React.Dispatch<React.SetStateAction<boolean>>;
   handleVerifyOtp: (inputOtpCode: number | null) => Promise<boolean>;
 }
 
@@ -33,11 +31,11 @@ const OtpModal = ({
   handleModalCancel,
   onResendOtp,
   addUserFormNameAndMail = false,
-  setIsUserRegisteredNewPhoneNumber,
+  setIsCompleteUserForm,
   handleVerifyOtp,
 }: OtpModalProps) => {
   const { auth } = useAuth();
-  const userPhoneNumber = auth.userPhoneNumber;
+  const userPhoneNumber = auth.tempUserPhoneNumber;
 
   const navigate = useNavigate();
 
@@ -74,8 +72,8 @@ const OtpModal = ({
       console.log("OTP matched");
       handleModalCancel();
 
-      if (setIsUserRegisteredNewPhoneNumber && !addUserFormNameAndMail) {
-        setIsUserRegisteredNewPhoneNumber(true);
+      if (setIsCompleteUserForm && !addUserFormNameAndMail) {
+        setIsCompleteUserForm(true);
         return;
       }
 

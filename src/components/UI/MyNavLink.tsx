@@ -14,7 +14,7 @@ function MyNavLink({
         className={({ isActive }) =>
           `hover:text-foundation-orange-normal inline-block min-h-full text-black transition-all duration-200 ease-linear ${
             isActive ? "text-orange-medium active" : "text-black"
-          }`
+          } `
         }
       >
         {children}
