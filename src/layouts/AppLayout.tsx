@@ -6,7 +6,7 @@ function AppLayout() {
   return (
     <>
       <Header />
-      <main className="min-h-dvh">
+      <main className="min-h-svh">
         <Outlet />
       </main>
       <Footer />

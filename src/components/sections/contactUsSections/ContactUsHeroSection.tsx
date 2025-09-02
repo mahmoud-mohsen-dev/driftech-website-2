@@ -2,7 +2,7 @@ import bgImg from "../../../assets/backgrounds/man-in-a-call-smiling.png";
 
 function ContactUsHeroSection() {
   return (
-    <section className="relative h-dvh">
+    <section className="relative h-svh">
       {/* Background image with opacity */}
       <div className="absolute inset-0 h-full overflow-hidden">
         <img

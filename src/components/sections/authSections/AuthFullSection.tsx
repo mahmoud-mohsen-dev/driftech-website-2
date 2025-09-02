@@ -50,8 +50,8 @@ function AuthFullSection({
 
   return (
     <main
-      // className="bg-neutral-25 min-h-dvh w-full bg-size-[auto_78.61%] bg-position-[100%_80px] bg-no-repeat lg:flex lg:gap-[166px]"
-      className="bg-neutral-25 min-h-dvh w-full lg:grid lg:grid-cols-10 lg:gap-[20px]"
+      // className="bg-neutral-25 min-h-svh w-full bg-size-[auto_78.61%] bg-position-[100%_80px] bg-no-repeat lg:flex lg:gap-[166px]"
+      className="bg-neutral-25 min-h-svh w-full lg:grid lg:grid-cols-10 lg:gap-[20px]"
       // style={{ backgroundImage: `url(${imgSrc})` }}
     >
       <div
@@ -110,7 +110,7 @@ function AuthFullSection({
         />
       </div>
       <div className="hidden lg:col-span-full lg:col-start-6 lg:flex lg:justify-end xl:col-start-7">
-        {/* <img src={imgSrc} alt={altText} className="h-dvh" /> */}
+        {/* <img src={imgSrc} alt={altText} className="h-svh" /> */}
         <img src={imgSrc} alt={altText} className="auth-background-image" />
       </div>
     </main>

@@ -9,7 +9,7 @@ function HeroSectionWithLinearOrangeOverlay({
 }) {
   return (
     <section
-      className="relative h-dvh bg-cover bg-center bg-no-repeat"
+      className="relative h-svh bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${imgSrc})`,
       }}
