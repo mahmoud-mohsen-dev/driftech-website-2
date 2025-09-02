@@ -1,5 +1,4 @@
 import { Radio, type RadioChangeEvent } from "antd";
-import { useState } from "react";
 
 const style: React.CSSProperties = {
   display: "flex",
@@ -9,23 +8,22 @@ const style: React.CSSProperties = {
   gap: 20,
 };
 
+type AnswerType = { label: string; value: string };
+
 function Answers({
   answersData,
+  currentSelectedAnswer,
+  handleChange,
 }: {
-  answersData: { label: string; value: string }[];
+  answersData: AnswerType[];
+  currentSelectedAnswer: AnswerType | undefined;
+  handleChange: (e: RadioChangeEvent) => void;
 }) {
-  const [value, setValue] = useState(1);
-
-  const onChange = (e: RadioChangeEvent) => {
-    setValue(e.target.value);
-    console.log("radio checked", e.target.value);
-    console.log("answersData", answersData);
-  };
   return (
     <Radio.Group
       style={style}
-      onChange={onChange}
-      value={value}
+      onChange={handleChange}
+      value={currentSelectedAnswer?.value ?? undefined}
       options={answersData}
       className="quiz-answers"
     />

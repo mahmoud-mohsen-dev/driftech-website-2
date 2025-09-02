@@ -41,7 +41,7 @@ body:has(.ant-modal-mask) .auth-background-image {
 
 /* Quiz Answers */
 .quiz-answers .ant-radio-wrapper {
-  height: 104px;
+  height: 54px;
   border-radius: 12px;
   display: flex;
   justify-content: start;
@@ -73,4 +73,10 @@ body:has(.ant-modal-mask) .auth-background-image {
 
 .quiz-answers .ant-radio-wrapper .ant-radio-checked .ant-radio-inner::after {
   background-color: var(--color-foundation-orange-normal);
+}
+
+@media screen and (min-width: 1024px) {
+  .quiz-answers .ant-radio-wrapper {
+    height: 104px;
+  }
 }

@@ -8,15 +8,15 @@ function Header() {
   const navigate = useNavigate();
   return (
     <>
-      <header className="font-poppins shadow-custom fixed top-[41px] left-1/2 z-999 container mx-auto -translate-1/2 rounded-lg bg-white font-medium xl:top-[59px] xl:rounded-2xl">
-        <div className="relative flex h-[42px] items-center justify-between gap-5 px-4 py-[9px] xl:h-[75px] xl:px-8">
+      <header className="font-poppins shadow-custom fixed top-[41px] left-1/2 z-999 container mx-auto -translate-1/2 rounded-lg bg-white font-medium md:top-[59px] xl:rounded-2xl">
+        <div className="relative flex h-[42px] items-center justify-between gap-5 px-4 py-[9px] md:h-[75px] md:px-6 xl:px-8">
           <Link to="/">
             <img
               src="/logos/Logo-1.svg"
               alt="Drifttech logo"
               height={32}
               // width={60}
-              className="h-[40px] xl:h-[60px]"
+              className="h-[40px] md:h-[60px]"
             />
           </Link>
 

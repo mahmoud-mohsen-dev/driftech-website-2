@@ -9,7 +9,7 @@ function Search() {
 
   return (
     <form
-      className="ml-[2px] flex items-center gap-2 lg:w-[600px] lg:gap-[19.41px]"
+      className="ml-[2px] flex items-center gap-2 md:w-[600px] md:gap-[19.41px]"
       onSubmit={handleSubmit}
     >
       <input
@@ -27,7 +27,7 @@ function Search() {
       </button> */}
       <Btn
         type="submit"
-        className="basis-[48px] rounded-lg p-2 md:grow-0 md:basis-[90px]"
+        className="basis-[48px] rounded-lg p-2 sm:grow-0 sm:basis-[90px]"
         height="h-[49px]"
         width=""
         variant="for-bg-dark-without-border"
