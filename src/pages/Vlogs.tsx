@@ -2,7 +2,7 @@ import CarsVlogsHeroSection from "../components/sections/carsVlogsSections/CarsV
 import DriftechVlogsSection from "../components/sections/carsVlogsSections/DriftechVlogsSection";
 import NavigateToContactUsSection from "../components/sections/NavigateToContactUsSection";
 
-function CarsVlogs() {
+function Vlogs() {
   return (
     <>
       <CarsVlogsHeroSection />
@@ -12,4 +12,4 @@ function CarsVlogs() {
   );
 }
 
-export default CarsVlogs;
+export default Vlogs;

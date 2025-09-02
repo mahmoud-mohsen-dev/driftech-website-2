@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router";
 
 function Btn({
@@ -9,6 +10,8 @@ function Btn({
   height = "h-[53px]",
   type = "button",
   to,
+  applyShadowAnimation = true,
+  shadowColorNotPressed = "shadow-foundation-orange-dark/50",
 }: {
   children: React.ReactNode;
   variant?:
@@ -22,14 +25,17 @@ function Btn({
   height?: string;
   type?: "button" | "submit" | "reset";
   to?: string;
+  applyShadowAnimation?: boolean;
+  shadowColorNotPressed?: string;
 }) {
+  const [isPressed, setIsPressed] = useState(false);
+
   const styles = {
-    default:
-      "duration-100 ease-linear transition-all flex items-center justify-center ",
+    default: `duration-100 ease-linear transition-all flex items-center justify-center ${applyShadowAnimation ? (isPressed ? "translate-y-1 shadow-none" : `shadow-md ${shadowColorNotPressed}`) : ""} `,
     defaultColors:
-      "bg-foundation-orange-normal text-neutral-0 hover:text-foundation-orange-normal hover:bg-neutral-0 border border-transparent hover:border-foundation-orange-normal border-dashed ",
+      "bg-foundation-orange-normal text-neutral-0 hover:text-foundation-orange-normal hover:bg-neutral-0 border border-transparent hover:border-foundation-orange-normal",
     outlineForBgLightColors:
-      "text-foundation-orange-normal border-foundation-orange-normal border-[1.5px] bg-transparent hover:border-dashed",
+      "text-foundation-orange-normal border-foundation-orange-normal border-[1.5px] bg-transparent hover:bg-foundation-orange-normal hover:text-neutral-0",
     outlineForBgDarkColors:
       "text-neutral-0 border-foundation-orange-light border-[1.5px] bg-transparent hover:border-foundation-orange-normal hover:text-foundation-orange-normal",
     forBgDarkWithoutBorderColors:
@@ -62,6 +68,11 @@ function Btn({
   return (
     <button
       onClick={handleClick}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onMouseLeave={() => setIsPressed(false)}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
       className={`${width} ${height} ${styles.default} ${finalStyles} ${className}`}
       type={type}
     >

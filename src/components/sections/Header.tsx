@@ -8,10 +8,16 @@ function Header() {
   const navigate = useNavigate();
   return (
     <>
-      <header className="font-poppins shadow-custom fixed top-[59px] left-1/2 z-999 container mx-auto -translate-1/2 rounded-2xl bg-white font-medium">
-        <div className="relative flex h-[75px] items-center justify-between gap-5 px-4 py-4 xl:px-8">
+      <header className="font-poppins shadow-custom fixed top-[41px] left-1/2 z-999 container mx-auto -translate-1/2 rounded-lg bg-white font-medium xl:top-[59px] xl:rounded-2xl">
+        <div className="relative flex h-[42px] items-center justify-between gap-5 px-4 py-[9px] xl:h-[75px] xl:px-8">
           <Link to="/">
-            <img src="/logos/Logo-1.svg" alt="Drifttech logo" />
+            <img
+              src="/logos/Logo-1.svg"
+              alt="Drifttech logo"
+              height={32}
+              // width={60}
+              className="h-[40px] xl:h-[60px]"
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -32,7 +38,7 @@ function Header() {
               <MyNavLink to="/contact-us" hasUnderLineBorder={true}>
                 Contact Us
               </MyNavLink>
-              <MyNavLink to="/cars-vlogs" hasUnderLineBorder={true}>
+              <MyNavLink to="/vlogs" hasUnderLineBorder={true}>
                 Vlogs
               </MyNavLink>
             </ul>
@@ -62,7 +68,7 @@ function Header() {
               className="flex items-center justify-center"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <HiOutlineX size={28} /> : <HiOutlineMenu size={28} />}
+              {isOpen ? <HiOutlineX size={24} /> : <HiOutlineMenu size={24} />}
             </button>
             {/* Mobile Menu */}
             {isOpen && (
@@ -72,9 +78,9 @@ function Header() {
                   alt="polygon"
                   width={24.44}
                   height={20}
-                  className="absolute top-full left-1/2 h-[40px] min-w-[46px] -translate-x-1/2 translate-y-[22px] object-cover"
+                  className="absolute top-full left-1/2 h-[40px] min-w-[46px] -translate-x-1/2 translate-y-[8px] object-cover"
                 />
-                <div className="shadow-light-gray-2 absolute top-full right-0 w-fit min-w-[200px] translate-x-2.5 translate-y-[52px] rounded-lg bg-white xl:hidden">
+                <div className="shadow-light-gray-2 absolute top-full right-0 w-fit min-w-[200px] translate-x-2.5 translate-y-[40px] rounded-lg bg-white xl:hidden">
                   <nav className="flex flex-col items-start gap-4 px-5 py-5">
                     <ul className="flex w-full flex-col gap-3">
                       <MyNavLink
@@ -123,10 +129,10 @@ function Header() {
                         Contact Us
                       </MyNavLink>
                       <MyNavLink
-                        to="/cars-vlogs"
+                        to="/vlogs"
                         onClick={() => {
                           setIsOpen(false);
-                          navigate("/cars-vlogs");
+                          navigate("/vlogs");
                         }}
                       >
                         Vlogs

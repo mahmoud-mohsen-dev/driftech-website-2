@@ -16,7 +16,7 @@ function VlogCard({
   slug: string;
 }) {
   return (
-    <Link to={`/cars-vlogs/${slug}`}>
+    <Link to={`/vlogs/${slug}`}>
       <div className={`relative ${className}`}>
         <img
           src={imgSrc}

@@ -17,35 +17,37 @@ function Footer() {
           </div>
           {/* <div className="w-full lg:grid lg:grid-cols-[1fr_1fr_306px] lg:gap-[38px]"> */}
           <div className="mt-[38px] flex w-full flex-col justify-between gap-[38px] lg:mt-0 lg:flex-row">
-            {/* Footer links */}
-            <div>
-              <h5 className="text-neutral-0 text- mb-[20px] uppercase lg:mb-[30px]">
-                Company
-              </h5>
-              <ul className="flex flex-col gap-2.5 lg:gap-4">
-                <FooterLink href="/">Cars</FooterLink>
-                <FooterLink href="cars-vlogs">Vlogs</FooterLink>
-                <FooterLink href="/">My Finance Status</FooterLink>
-                <FooterLink href="about-us">About</FooterLink>
-                <FooterLink href="contact-us">Contact</FooterLink>
-                <FooterLink href="type-of-drifters">
-                  Type of Drifters
-                </FooterLink>
-              </ul>
-            </div>
-            {/* Additional links */}
-            <div>
-              <h5 className="text-neutral-0 mb-[20px] uppercase lg:mb-[30px]">
-                Company
-              </h5>
-              <ul className="flex flex-col gap-2.5 lg:gap-4">
-                <FooterLink href="/">Help center</FooterLink>
-                <FooterLink href="/">How it works</FooterLink>
-              </ul>
+            <div className="flex w-full justify-between gap-[38px]">
+              {/* Footer links */}
+              <div className="basis-1/2">
+                <h5 className="text-neutral-0 mb-[20px] font-semibold uppercase lg:mb-[30px] lg:font-medium">
+                  Company
+                </h5>
+                <ul className="flex flex-col gap-2.5 lg:gap-4">
+                  <FooterLink href="/">Cars</FooterLink>
+                  <FooterLink href="vlogs">Vlogs</FooterLink>
+                  <FooterLink href="/">My Finance Status</FooterLink>
+                  <FooterLink href="about-us">About</FooterLink>
+                  <FooterLink href="contact-us">Contact</FooterLink>
+                  <FooterLink href="type-of-drifters">
+                    Type of Drifters
+                  </FooterLink>
+                </ul>
+              </div>
+              {/* Additional links */}
+              <div className="basis-1/2">
+                <h5 className="text-neutral-0 mb-[20px] font-semibold uppercase lg:mb-[30px] lg:font-medium">
+                  Company
+                </h5>
+                <ul className="flex flex-col gap-2.5 lg:gap-4">
+                  <FooterLink href="/">Help center</FooterLink>
+                  <FooterLink href="/">How it works</FooterLink>
+                </ul>
+              </div>
             </div>
             {/* Newsletter subscription */}
             <div>
-              <h5 className="text-neutral-0 mb-[20px] min-w-[306px] uppercase lg:mb-[30px]">
+              <h5 className="text-neutral-0 mb-[20px] min-w-[306px] font-semibold uppercase lg:mb-[30px] lg:font-medium">
                 Newsletter
               </h5>
               <form>
@@ -68,7 +70,7 @@ function Footer() {
 
               {/* Mobile Application*/}
               <div className="mt-[37px]">
-                <h5 className="text-neutral-0 mb-[20px] !leading-[18px] uppercase lg:mb-[30px]">
+                <h5 className="text-neutral-0 mb-[20px] !leading-[18px] font-semibold uppercase lg:mb-[30px] lg:font-medium">
                   Our Mobile App
                 </h5>
 
@@ -80,7 +82,7 @@ function Footer() {
                     }}
                     heading="Download on the"
                     description="App Store"
-                    className="w-[124px]"
+                    applyLargeSizeOnSmallScreens={true}
                   />
                   <DownloadApp
                     image={{
@@ -89,7 +91,7 @@ function Footer() {
                     }}
                     heading="Download on the"
                     description="google play"
-                    className="w-[124px]"
+                    applyLargeSizeOnSmallScreens={true}
                   />
                 </div>
               </div>

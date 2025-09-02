@@ -38,3 +38,39 @@ body:has(.ant-modal-mask) .auth-background-image {
   height: fit-content;
   padding: 4px 10px;
 }
+
+/* Quiz Answers */
+.quiz-answers .ant-radio-wrapper {
+  height: 104px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10px 22px;
+  gap: 2px;
+  border: 1.5px solid var(--color-foundation-gray-normal);
+  margin: 0;
+}
+
+.quiz-answers .ant-radio-wrapper.ant-radio-wrapper-checked {
+  border-color: var(--color-foundation-orange-normal);
+}
+
+/* Outer circle radio */
+.quiz-answers .ant-radio-wrapper .ant-radio-inner {
+  border-width: 1.5px;
+  border-color: var(--color-foundation-gray-normal);
+}
+
+.quiz-answers .ant-radio-wrapper.ant-radio-wrapper-checked .ant-radio-inner {
+  border-color: var(--color-foundation-orange-normal);
+}
+
+/* Inner circle radio */
+.quiz-answers .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  background-color: var(--color-neutral-0);
+}
+
+.quiz-answers .ant-radio-wrapper .ant-radio-checked .ant-radio-inner::after {
+  background-color: var(--color-foundation-orange-normal);
+}

@@ -8,11 +8,12 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import AppLayout from "./layouts/AppLayout";
 import ContactUs from "./pages/ContactUs";
-import CarsVlogs from "./pages/CarsVlogs";
+import Vlogs from "./pages/Vlogs";
 import CarVlog from "./pages/carsVlog/CarVlog";
 import TypeOfDrifters from "./pages/TypeOfDrifters";
 import ScrollToTop from "./components/UI/ScrollToTop";
 import ScrollToHashElement from "./components/UI/ScrollToHashElement";
+import Quiz from "./pages/Quiz";
 
 function App() {
   return (
@@ -67,9 +68,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about-us" element={<About />} />
             <Route path="contact-us" element={<ContactUs />} />
-            <Route path="cars-vlogs" element={<CarsVlogs />} />
-            <Route path="cars-vlogs/:vlogName" element={<CarVlog />} />
+            <Route path="vlogs" element={<Vlogs />} />
+            <Route path="vlogs/:vlogName" element={<CarVlog />} />
             <Route path="type-of-drifters" element={<TypeOfDrifters />} />
+            <Route path="quiz" element={<Quiz />} />
           </Route>
 
           <Route element={<AuthLayout />}>

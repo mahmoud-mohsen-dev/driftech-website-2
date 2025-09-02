@@ -11,7 +11,7 @@ function CarVlog() {
       title: <Link to="/">Home</Link>,
     },
     {
-      title: <Link to="/cars-vlogs">Cars Vlogs</Link>,
+      title: <Link to="/vlogs">Cars Vlogs</Link>,
     },
     {
       title: vlogName,
