@@ -12,9 +12,6 @@ import type {
 } from "../types/otpResponseTypes";
 import axios from "../api/axios";
 
-const SEND_OTP = "api/auth/send-otp";
-const VERIFY_OTP = "api/auth/verify-otp";
-
 export default function useOtpModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -48,15 +45,19 @@ export default function useOtpModal() {
   const showModal = () => {
     setIsModalOpen(true);
   };
-  const handleSendOtp = async (phoneNumber: string) => {
+  const handleSendOtp = async (
+    phoneNumber: string,
+    path: string,
+    isForgotPass: number,
+  ) => {
     console.log("phoneNumber", phoneNumber);
 
     try {
       const response: AxiosResponse<
         SendOTPSuccessResponse | SendOTPErrorResponse
       > = await axios.post(
-        SEND_OTP,
-        { phone: phoneNumber, isForgotPass: 0 }, // isForgotPass: 1 for forgot password && 0 for register
+        path,
+        { phone: phoneNumber, isForgotPass }, // isForgotPass: 1 for forgot password && 0 for register
         {
           headers: { "Content-Type": "application/json" },
         },
@@ -114,7 +115,13 @@ export default function useOtpModal() {
       handleModalCancel();
     }
   };
-  const handleVerifyOtp = async (inputOtpCode: number | null) => {
+  const handleVerifyOtp = async ({
+    inputOtpCode,
+    path,
+  }: {
+    inputOtpCode: number | null;
+    path: string;
+  }) => {
     console.log("phoneNumber", auth.tempUserPhoneNumber);
     console.log("otpCode", inputOtpCode);
     setOtpModalIsloading(true);
@@ -123,7 +130,7 @@ export default function useOtpModal() {
       const response: AxiosResponse<
         VerifyOTPSuccessResponse | VerifyOTPErrorResponse
       > = await axios.post(
-        VERIFY_OTP,
+        path,
         { phone: auth.tempUserPhoneNumber, otp_code: inputOtpCode },
         {
           headers: { "Content-Type": "application/json" },
@@ -181,11 +188,11 @@ export default function useOtpModal() {
     }
   };
 
-  const onSendOtp = (formValues: any) => {
-    handleSendOtp(formValues.userPhoneNumber);
+  const onSendOtp = (formValues: any, path: string, isForgotPass: number) => {
+    handleSendOtp(formValues.userPhoneNumber, path, isForgotPass);
   };
-  const onResendOtp = () => {
-    handleSendOtp(auth.tempUserPhoneNumber);
+  const onResendOtp = (path: string, isForgotPass: number) => {
+    handleSendOtp(auth.tempUserPhoneNumber, path, isForgotPass);
   };
 
   return {

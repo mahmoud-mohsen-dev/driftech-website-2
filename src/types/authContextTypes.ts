@@ -22,6 +22,15 @@ export type AuthContextType = {
     password: string;
     passwordConfirmation: string;
   }) => Promise<boolean | null>;
+  resetPassword({
+    userId,
+    password,
+    passwordConfirmation,
+  }: {
+    userId: number | null;
+    password: string;
+    passwordConfirmation: string;
+  }): Promise<boolean | null>;
 };
 
 export type UserDataType = {

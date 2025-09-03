@@ -12,7 +12,7 @@ function Login() {
       authFooterSectionLinkHref="/sign-up"
       authFooterSectionLinkText="Sign Up"
       buttonText="Login"
-      isLoginForm={true}
+      variant="login"
     />
   );
 }

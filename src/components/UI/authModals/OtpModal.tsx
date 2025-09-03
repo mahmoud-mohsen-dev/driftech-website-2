@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { useNavigate } from "react-router";
 
+const VERIFY_OTP = "api/auth/verify-otp";
+
 type OTPProps = GetProps<typeof Input.OTP>;
 
 interface OtpModalProps {
@@ -19,7 +21,14 @@ interface OtpModalProps {
   handleModalCancel: () => void;
   onResendOtp: () => void;
   setIsCompleteUserForm?: React.Dispatch<React.SetStateAction<boolean>>;
-  handleVerifyOtp: (inputOtpCode: number | null) => Promise<boolean>;
+  handleVerifyOtp: ({
+    inputOtpCode,
+    path,
+  }: {
+    inputOtpCode: number | null;
+    path: string;
+  }) => Promise<boolean>;
+  variant?: "login" | "register" | "forget-password";
 }
 
 const OtpModal = ({
@@ -33,6 +42,7 @@ const OtpModal = ({
   addUserFormNameAndMail = false,
   setIsCompleteUserForm,
   handleVerifyOtp,
+  variant,
 }: OtpModalProps) => {
   const { auth } = useAuth();
   const userPhoneNumber = auth.tempUserPhoneNumber;
@@ -63,7 +73,10 @@ const OtpModal = ({
 
     const inputOtp = !isNaN(Number(OTP)) ? Number(OTP) : null;
 
-    const response = await handleVerifyOtp(inputOtp);
+    const response = await handleVerifyOtp({
+      inputOtpCode: inputOtp,
+      path: VERIFY_OTP,
+    });
     console.log("response", response);
 
     if (response) {
@@ -74,6 +87,11 @@ const OtpModal = ({
 
       if (setIsCompleteUserForm && !addUserFormNameAndMail) {
         setIsCompleteUserForm(true);
+        return;
+      }
+
+      if (variant === "forget-password") {
+        navigate("/reset-password");
         return;
       }
 

@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 
 interface Option {
   label: string;
-  value: string;
+  value: string | number;
 }
 
 interface BaseProps {

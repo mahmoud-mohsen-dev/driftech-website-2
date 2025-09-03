@@ -1,11 +1,27 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import MyNavLink from "../UI/MyNavLink";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
+import { getCookie } from "../../helpers/cookieHelpers";
+import NotificationItem from "../UI/NotificationItem";
+import { v4 } from "uuid";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOnSmallScreensOpen, setIsMenuOnSmallScreensOpen] =
+    useState(false);
+  const [isNotificationMenuOpen, setIsNotificationMenuOpen] = useState(false);
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false);
   const navigate = useNavigate();
+
+  const hasNotification = true;
+
+  useEffect(() => {
+    const token = getCookie("token");
+    if (token) {
+      setIsUserSignedIn(true);
+    }
+  }, []);
+
   return (
     <>
       <header className="font-poppins shadow-custom fixed top-[41px] left-1/2 z-999 container mx-auto -translate-1/2 rounded-lg bg-white font-medium md:top-[59px] xl:rounded-2xl">
@@ -44,34 +60,115 @@ function Header() {
             </ul>
           </nav>
 
-          {/* Desktop Auth Buttons */}
-          <div className="hidden xl:flex xl:items-center xl:gap-1.5">
-            <NavLink
-              to={"/login"}
-              className={({ isActive }) =>
-                `text-foundation-brown-normal hover:text-orange-medium px-6 py-3 leading-6 capitalize underline transition duration-200 ease-linear ${isActive ? "text-orange-medium" : "text-black"}`
-              }
-            >
-              Log In
-            </NavLink>
-            <a
-              href="/sign-up"
-              className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal rounded-lg p-2.5 capitalize transition duration-200 ease-in"
-            >
-              Create Account
-            </a>
-          </div>
+          {isUserSignedIn ? (
+            // Profile and Notification Buttons
+            <div className="hidden xl:flex xl:items-center xl:gap-4">
+              <div className="relative">
+                <button
+                  className="relative h-8 w-8"
+                  onClick={() => {
+                    setIsNotificationMenuOpen(!isNotificationMenuOpen);
+                  }}
+                  onBlur={() => {
+                    setIsNotificationMenuOpen(false);
+                  }}
+                >
+                  {hasNotification && (
+                    <span className="bg-foundation-red-medium absolute top-1 right-1 z-10 h-2 w-2 rounded-full"></span>
+                  )}
+
+                  <img
+                    src="/icons/notification-bill.svg"
+                    alt="notification icon"
+                    width={32}
+                    height={32}
+                  />
+                </button>
+                {/* Notification Menu */}
+                {isNotificationMenuOpen && (
+                  <>
+                    <img
+                      src="/icons/polygon.svg"
+                      alt="polygon"
+                      width={24.44}
+                      height={20}
+                      className="absolute top-full left-1/2 h-[40px] min-w-[46px] -translate-x-1/2 translate-y-[16px] object-cover"
+                    />
+                    <div className="shadow-light-gray-2 absolute top-full right-0 hidden w-fit min-w-[350px] translate-x-2.5 translate-y-[48px] space-y-3 rounded-lg bg-white px-4 py-9 sm:block">
+                      <NotificationItem
+                        key={v4()}
+                        title="Password changer"
+                        description="Your data is safe with us – our hiring app is built with top-notch security to protect your privacy"
+                        date="4 June 2025 | 10:03 PM"
+                        isNew={true}
+                      />
+                      <NotificationItem
+                        key={v4()}
+                        title="Password changer"
+                        description="Your data is safe with us – our hiring app is built with top-notch security to protect your privacy"
+                        date="4 June 2025 | 10:03 PM"
+                        isNew={true}
+                      />
+                      <NotificationItem
+                        key={v4()}
+                        title="Password changer"
+                        description="Your data is safe with us – our hiring app is built with top-notch security to protect your privacy"
+                        date="4 June 2025 | 10:03 PM"
+                        isNew={false}
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
+
+              <Link to={"/profile"}>
+                <img
+                  src="/icons/profile.svg"
+                  alt="profile icon"
+                  width={32}
+                  height={32}
+                />
+              </Link>
+            </div>
+          ) : (
+            //  Desktop Auth Buttons
+            <div className="hidden xl:flex xl:items-center xl:gap-1.5">
+              <NavLink
+                to={"/login"}
+                className={({ isActive }) =>
+                  `text-foundation-brown-normal hover:text-orange-medium px-6 py-3 leading-6 capitalize underline transition duration-200 ease-linear ${isActive ? "text-orange-medium" : "text-black"}`
+                }
+              >
+                Log In
+              </NavLink>
+              <a
+                href="/sign-up"
+                className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal rounded-lg p-2.5 capitalize transition duration-200 ease-in"
+              >
+                Create Account
+              </a>
+            </div>
+          )}
 
           <div className="relative block xl:hidden">
             {/* Burger Button - only on small screens */}
             <button
               className="flex items-center justify-center"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() =>
+                setIsMenuOnSmallScreensOpen(!isMenuOnSmallScreensOpen)
+              }
+              onBlur={() => {
+                setIsMenuOnSmallScreensOpen(false);
+              }}
             >
-              {isOpen ? <HiOutlineX size={24} /> : <HiOutlineMenu size={24} />}
+              {isMenuOnSmallScreensOpen ? (
+                <HiOutlineX size={24} />
+              ) : (
+                <HiOutlineMenu size={24} />
+              )}
             </button>
             {/* Mobile Menu */}
-            {isOpen && (
+            {isMenuOnSmallScreensOpen && (
               <>
                 <img
                   src="/icons/polygon.svg"
@@ -86,7 +183,7 @@ function Header() {
                       <MyNavLink
                         to="/"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/");
                         }}
                       >
@@ -95,7 +192,7 @@ function Header() {
                       <MyNavLink
                         to="/cars"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/cars");
                         }}
                       >
@@ -104,7 +201,7 @@ function Header() {
                       <MyNavLink
                         to="/my-finance-status"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/my-finance-status");
                         }}
                       >
@@ -113,7 +210,7 @@ function Header() {
                       <MyNavLink
                         to="/about-us"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/about-us");
                         }}
                       >
@@ -122,7 +219,7 @@ function Header() {
                       <MyNavLink
                         to="/contact-us"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/contact-us");
                         }}
                       >
@@ -131,7 +228,7 @@ function Header() {
                       <MyNavLink
                         to="/vlogs"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/vlogs");
                         }}
                       >
@@ -140,7 +237,7 @@ function Header() {
                       <MyNavLink
                         to="/login"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/login");
                         }}
                       >
@@ -150,7 +247,7 @@ function Header() {
                         to="/sign-up"
                         className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal block w-full rounded-lg p-2.5 text-center capitalize transition duration-200 ease-in"
                         onClick={() => {
-                          setIsOpen(false);
+                          setIsMenuOnSmallScreensOpen(false);
                           navigate("/sign-up");
                         }}
                       >

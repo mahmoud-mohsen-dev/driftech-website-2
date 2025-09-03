@@ -10,6 +10,7 @@ function NotFound() {
         src={notFoundImg}
         alt="Error 404 - page not found photo with a cute cat"
         width={500}
+        height={500}
       />
       <Link to="/" className="mx-auto w-[80%] max-w-[325px] md:w-fit">
         <Button

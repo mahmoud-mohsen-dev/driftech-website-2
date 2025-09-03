@@ -11,6 +11,7 @@ import { setCookie } from "../helpers/cookieHelpers";
 
 const LOGIN = "api/auth/login";
 const COMPLETE_PROFILE = "api/complete-profile";
+const RESET_PASSWORD = "api/reset-password";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [auth, setAuth] = useState<AuthType>({
@@ -158,9 +159,78 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  async function resetPassword({
+    userId,
+    password,
+    passwordConfirmation,
+  }: {
+    userId: number | null;
+    password: string;
+    passwordConfirmation: string;
+  }) {
+    try {
+      const response: AxiosResponse<
+        SigninSuccessResponseType | SigninErrorResponseType
+      > = await axios.post(
+        RESET_PASSWORD,
+        {
+          user_id: userId,
+          password,
+          password_confirmation: passwordConfirmation,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          // withCredentials: true,
+        },
+      );
+      // ✅ Narrow by checking if "error" exists
+      if ("error" in response.data) {
+        const errorObj = response.data.error ?? {}; // ✅ fallback to empty object
+        const errorMessage =
+          Object.values(errorObj).flat().join(", ") || "Unknown error";
+        throw new Error(errorMessage);
+      }
+
+      // console.log(JSON.stringify(response?.data));
+      const message = "message" in response.data ? response.data.message : null;
+      const isSuccessMessage = message === "تم إعادة تعيين كلمة المرور بنجاح.";
+
+      const loginResponse = await login(
+        auth?.tempUserPhoneNumber ?? null,
+        password,
+      );
+
+      console.log("loginResponse", loginResponse);
+
+      if (loginResponse && isSuccessMessage) {
+        return true;
+      }
+
+      console.error("Resetting Password failed");
+      console.log(response);
+      return null;
+    } catch (err: any) {
+      // error("OTP code timeout.");
+      if (err?.response?.data?.error === "بيانات الدخول غير صحيحة.") {
+        console.error("Resetting Password failed");
+        return null;
+      }
+      console.error("Server Error");
+      console.log(err);
+
+      return false;
+    }
+  }
+
   return (
     <AuthContext.Provider
-      value={{ auth, setAuth, login, completeUserProfileRegister }}
+      value={{
+        auth,
+        setAuth,
+        login,
+        completeUserProfileRegister,
+        resetPassword,
+      }}
     >
       {children}
     </AuthContext.Provider>

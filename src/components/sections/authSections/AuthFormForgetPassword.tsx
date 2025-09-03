@@ -1,6 +1,9 @@
 import { Button, Form, Input, type FormInstance, type InputRef } from "antd";
+// import { useToast } from "../../../hooks/useToast";
+// import { useAuth } from "../../../hooks/useAuth";
+// import { useNavigate } from "react-router";
 
-function AuthRegisterForm({
+function AuthFormForgetPassword({
   handleFinish,
   userRef,
   buttonText,
@@ -11,11 +14,47 @@ function AuthRegisterForm({
   userRef: React.Ref<InputRef>;
   buttonText: string;
 }) {
+  // const { resetPassword } = useAuth();
+  // const { error, success, loading } = useToast();
+  // const navigate = useNavigate();
+
+  // const handleFinish = async (values: any) => {
+  //   console.log("values", values);
+
+  //   try {
+  //     loading({ isLoading: true });
+  //     const response = await resetPassword(
+  //       values.userPhoneNumber,
+  //       values.userPassword,
+  //     );
+
+  //     if (response === null) {
+  //       error("Phone number or password is incorrect");
+  //       return;
+  //     }
+  //     if (!response) {
+  //       error("Login failed");
+  //       return;
+  //     }
+
+  //     success("You have successfully logged in!");
+  //     setTimeout(() => {
+  //       navigate("/reset-password");
+  //     }, 500); // half a second delay
+  //   } catch (e) {
+  //     console.log("error", e);
+  //     error("Login failed");
+  //     form.resetFields();
+  //   } finally {
+  //     loading({ isLoading: false });
+  //   }
+  // };
+
   return (
     <Form
       form={form}
       onFinishFailed={(e) => {
-        console.log("onFinishFailed of signin form was triggered", e);
+        console.log("onFinishFailed of forget password form was triggered", e);
       }}
       onFinish={handleFinish}
       colon={false}
@@ -71,4 +110,4 @@ function AuthRegisterForm({
   );
 }
 
-export default AuthRegisterForm;
+export default AuthFormForgetPassword;

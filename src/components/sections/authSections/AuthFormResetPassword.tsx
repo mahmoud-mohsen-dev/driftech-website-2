@@ -1,10 +1,9 @@
 import { Button, Form, Input, type FormInstance, type InputRef } from "antd";
-import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../../hooks/useAuth";
 import { useToast } from "../../../hooks/useToast";
+import { useNavigate } from "react-router";
 
-function AuthFormRegister({
-  // onFinish,
+function AuthFormResetPassword({
   userRef,
   buttonText,
   form,
@@ -14,33 +13,43 @@ function AuthFormRegister({
   userRef: React.Ref<InputRef>;
   buttonText: string;
 }) {
-  const { login } = useAuth();
-  const { error, success, loading } = useToast();
+  const { resetPassword, auth } = useAuth();
+  const { success, error, loading } = useToast();
   const navigate = useNavigate();
 
-  const handleFinish = async (values: any) => {
-    console.log("values", values);
-
+  const handleFormFinish = async (values: {
+    name: string;
+    email: string;
+    password: string;
+    confirm: string;
+  }) => {
     try {
       loading({ isLoading: true });
-      const response = await login(values.userPhoneNumber, values.userPassword);
+
+      const response = await resetPassword({
+        userId: auth?.user?.id ?? null,
+        password: values.password,
+        passwordConfirmation: values.confirm,
+      });
+
+      console.log("handleFormFinish @AuthFormResetPassword response", response);
 
       if (response === null) {
-        error("Phone number or password is incorrect");
+        error("Resetting Password failed");
         return;
       }
       if (!response) {
-        error("Login failed");
+        error("Something went wrong");
         return;
       }
 
-      success("You have successfully logged in!");
+      success("Your password has been reset successfully!");
       setTimeout(() => {
         navigate("/");
       }, 500); // half a second delay
     } catch (e) {
       console.log("error", e);
-      error("Login failed");
+      error("Resetting failed");
       form.resetFields();
     } finally {
       loading({ isLoading: false });
@@ -51,52 +60,14 @@ function AuthFormRegister({
     <Form
       form={form}
       onFinishFailed={(e) => {
-        console.log("onFinishFailed of signin form was triggered", e);
+        console.log("onFinishFailed of reset password form was triggered", e);
       }}
-      onFinish={handleFinish}
+      onFinish={handleFormFinish}
       colon={false}
       requiredMark={false}
     >
       <Form.Item
-        name="userPhoneNumber"
-        className="!mb-9"
-        labelCol={{ span: 24 }}
-        rules={[
-          {
-            required: true,
-            message: "Please input your phone number!",
-          },
-          {
-            pattern: /^01[0-9]{8,10}$/,
-            message: "Please enter a valid Egyptian phone number",
-          },
-        ]}
-        label={
-          <span className="font-inter text-foundation-brown-normal mb-[13px] text-[24.6px] leading-[30px] font-medium">
-            Phone Number
-          </span>
-        }
-      >
-        <Input
-          type="text"
-          placeholder="Enter your Phone Number"
-          className="placeholder:!text-[20px] placeholder:!leading-[24px]"
-          style={{
-            color: "var(--color-foundation-brown-normal)",
-            minHeight: "77.33px",
-            borderRadius: "8px",
-            borderWidth: "1.76px",
-            // border: "1.76px solid var(--color-foundation-gray-normal)",
-            padding: "16px",
-            fontSize: "20px",
-            lineHeight: "24px",
-            fontWeight: "500",
-          }}
-          ref={userRef}
-        />
-      </Form.Item>
-      <Form.Item
-        name="userPassword"
+        name="password"
         className="!mb-9"
         labelCol={{ span: 24 }}
         rules={[
@@ -104,15 +75,16 @@ function AuthFormRegister({
             required: true,
             message: "Please input your password!",
           },
-          { min: 8, message: "Password must be at least 8 characters" },
         ]}
         label={
           <span className="font-inter text-foundation-brown-normal mb-[13px] text-[24.6px] leading-[30px] font-medium">
             Password
           </span>
         }
+        hasFeedback
       >
         <Input.Password
+          ref={userRef}
           placeholder="Enter your Password"
           className="placeholder:!text-[20px] placeholder:!leading-[24px]"
           style={{
@@ -129,18 +101,54 @@ function AuthFormRegister({
         />
       </Form.Item>
 
-      <Link
-        to="/forget-password"
-        className="text-[clamp(0.875rem,0.5vw+0.75rem,1rem)] leading-[clamp(1.25rem,0.5vw+1rem,1.5rem)]"
-        style={{ color: "var(--color-foundation-red-normal)" }}
+      <Form.Item
+        name="confirm"
+        dependencies={["password"]}
+        className="!mb-9"
+        labelCol={{ span: 24 }}
+        hasFeedback
+        label={
+          <span className="font-inter text-foundation-brown-normal mb-[13px] text-[24.6px] leading-[30px] font-medium">
+            Confirm Password
+          </span>
+        }
+        rules={[
+          {
+            required: true,
+            message: "Please confirm your password!",
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue("password") === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(
+                new Error("The new password that you entered do not match!"),
+              );
+            },
+          }),
+        ]}
       >
-        Forgot your password ?
-      </Link>
-
+        <Input.Password
+          placeholder="Confirm Password"
+          className="placeholder:!text-[20px] placeholder:!leading-[24px]"
+          style={{
+            color: "var(--color-foundation-brown-normal)",
+            minHeight: "77.33px",
+            borderRadius: "8px",
+            // border: "1.76px solid var(--color-foundation-gray-normal)",
+            padding: "16px",
+            fontSize: "20px",
+            lineHeight: "24px",
+            fontWeight: "500",
+            borderWidth: "1.76px",
+          }}
+        />
+      </Form.Item>
       <Button
         type="primary"
         htmlType="submit"
-        className="mt-7 min-h-[56px] w-full cursor-pointer text-2xl leading-[56px] font-medium capitalize"
+        className="min-h-[56px] w-full cursor-pointer text-2xl leading-[56px] font-medium capitalize"
       >
         {buttonText}
       </Button>
@@ -148,4 +156,4 @@ function AuthFormRegister({
   );
 }
 
-export default AuthFormRegister;
+export default AuthFormResetPassword;

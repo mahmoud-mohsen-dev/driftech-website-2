@@ -8,6 +8,16 @@ function AutoLoanCalculatorForm() {
 
   const handleSubmit = () => {};
 
+  const optionsData = [
+    { label: "12 month ( 1 years )", value: 12 },
+    { label: "24 month ( 2 years )", value: 24 },
+    { label: "36 month ( 3 years )", value: 36 },
+    { label: "48 month ( 4 years )", value: 48 },
+    { label: "60 month ( 5 years )", value: 60 },
+    { label: "72 month ( 6 years )", value: 72 },
+    { label: "84 month ( 7 years )", value: 84 },
+  ];
+
   return (
     <form
       id="auto-loan-calculator"
@@ -43,7 +53,7 @@ function AutoLoanCalculatorForm() {
           label="Choose period"
           // placeholder="84 month ( 7 years )"
           isSelect={true}
-          options={[{ label: "84 month ( 7 years )", value: "84" }]}
+          options={optionsData}
         />
       </div>
 

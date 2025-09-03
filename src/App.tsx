@@ -14,6 +14,8 @@ import TypeOfDrifters from "./pages/TypeOfDrifters";
 import ScrollToTop from "./components/UI/ScrollToTop";
 import ScrollToHashElement from "./components/UI/ScrollToHashElement";
 import Quiz from "./pages/Quiz";
+import ForgetPassword from "./pages/ForgetPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -77,6 +79,8 @@ function App() {
           <Route element={<AuthLayout />}>
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<Signup />} />
+            <Route path="forget-password" element={<ForgetPassword />} />
+            <Route path="reset-password" element={<ResetPassword />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
