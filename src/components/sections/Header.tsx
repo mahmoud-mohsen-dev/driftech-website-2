@@ -18,7 +18,7 @@ function Header() {
   const [isNotificationMenuOpen, setIsNotificationMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
-  const { success, error } = useToast();
+  const { success, error, loading } = useToast();
   const navigate = useNavigate();
 
   const notificationRef = useRef<HTMLDivElement>(null);
@@ -58,6 +58,9 @@ function Header() {
 
   const handleSignOut = async () => {
     try {
+      loading({ text: "Signing out, please wait...", isLoading: true });
+      setIsProfileMenuOpen(false);
+
       const token = getCookie("token");
       if (!token) return;
 
@@ -93,6 +96,8 @@ function Header() {
       error("Something went wrong");
       removeCookie("token");
       setIsUserSignedIn(false);
+    } finally {
+      loading({ isLoading: false });
     }
   };
 

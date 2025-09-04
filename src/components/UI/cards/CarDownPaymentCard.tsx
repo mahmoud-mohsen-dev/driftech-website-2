@@ -7,7 +7,12 @@ function CarDownPaymentCard() {
 
   return (
     <div className="font-poppins relative">
-      <img src="/icons/modern-car.svg" alt="modern car" />
+      <img
+        src="/icons/modern-car.svg"
+        alt="modern car"
+        width={355}
+        height={375}
+      />
       {/*Card Header */}
       <div className="absolute top-[24.72px] left-1/2 flex w-full -translate-x-[50%] items-center justify-between px-4 md:px-6">
         <Btn
