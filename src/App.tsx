@@ -16,6 +16,7 @@ import ScrollToHashElement from "./components/UI/ScrollToHashElement";
 import Quiz from "./pages/Quiz";
 import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
+import Finance from "./pages/Finance";
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
             <Route path="vlogs/:vlogName" element={<CarVlog />} />
             <Route path="type-of-drifters" element={<TypeOfDrifters />} />
             <Route path="quiz" element={<Quiz />} />
+            <Route path="finance" element={<Finance />} />
           </Route>
 
           <Route element={<AuthLayout />}>

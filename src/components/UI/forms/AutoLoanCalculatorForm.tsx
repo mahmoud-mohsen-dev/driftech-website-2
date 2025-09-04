@@ -21,16 +21,16 @@ function AutoLoanCalculatorForm() {
   return (
     <form
       id="auto-loan-calculator"
-      className="font-poppins bg-neutral-0 shadow-partner-image flex flex-col gap-[19.85px] rounded-[9.93px] px-8 py-7"
+      className="bg-neutral-0 shadow-partner-image flex flex-col gap-[19.85px] rounded-[9.93px] px-8 py-7"
     >
       <div>
         {/* <div className="" /> */}
-        <h3 className="border-foundation-orange-normal text- text-black-medium border-l-4 pl-2 text-[20px] font-medium capitalize">
+        <h3 className="border-foundation-orange-normal font-poppins text-black-medium border-l-4 pl-2 text-[20px] font-medium capitalize">
           Auto Loan Calculator
         </h3>
       </div>
 
-      <h5 className="text-foundation-gray-normal max-w-[60ch] text-xs leading-[15px] font-medium">
+      <h5 className="text-foundation-gray-normal font-inter max-w-[60ch] text-xs leading-[15px] font-medium">
         Use this calculator to estimate your monthly car payment and see
         detailed loan breakdown.
       </h5>
@@ -64,7 +64,7 @@ function AutoLoanCalculatorForm() {
         width={222}
       />
 
-      <h4 className="text-primary text-center text-[15.71px] leading-6 font-semibold">
+      <h4 className="text-primary font-poppins text-center text-[15.71px] leading-6 font-semibold">
         15.576 LE/60
       </h4>
 

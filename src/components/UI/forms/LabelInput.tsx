@@ -52,7 +52,7 @@ export const LabelInput = forwardRef<
   } = props;
 
   const baseInputStyles =
-    "border-gray-medium-700 focus:ring-orange-medium placeholder:text-gray-medium-700 h-[46px] rounded-[6.62px] border text-xs leading-[18px] text-black placeholder:text-xs placeholder:leading-[18px] focus:ring-2 focus:outline-none";
+    "border-gray-medium-700 focus:ring-orange-medium placeholder:text-gray-medium-700 h-[46px] rounded-[6.62px] border text-xs leading-[18px] text-black placeholder:text-xs placeholder:leading-[18px] focus:ring-2 focus:outline-none font-poppins";
 
   if (props.isSelect) {
     const { options, selectClassName } = props;
@@ -71,7 +71,7 @@ export const LabelInput = forwardRef<
           className={`${baseInputStyles} cursor-pointer appearance-none pr-3 ${appliedSelectClassName}`}
         >
           {options.map((option, i) => (
-            <option key={i} value={option.value}>
+            <option key={i} value={option.value} className="font-poppins">
               {option.label}
             </option>
           ))}
