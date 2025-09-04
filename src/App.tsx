@@ -60,6 +60,9 @@ function App() {
             //   controlHeight: 34,
             //   optionPadding: "2px 11px",
           },
+          Select: {
+            colorBorder: "#9c9c9c",
+          },
         },
       }}
     >

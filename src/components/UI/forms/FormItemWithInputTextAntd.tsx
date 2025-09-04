@@ -12,6 +12,7 @@ type CustomFormItemWithInputTextAntdProps = {
   inputPlaceHolder: string;
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
+  prefix?: React.ReactNode;
 };
 
 function FormItemWithInputTextAntd({
@@ -35,6 +36,7 @@ function FormItemWithInputTextAntd({
     lineHeight: "27px",
     fontWeight: "500",
   },
+  prefix,
 }: CustomFormItemWithInputTextAntdProps) {
   return (
     <Form.Item
@@ -54,7 +56,7 @@ function FormItemWithInputTextAntd({
         className={inputClassName}
         style={inputStyle}
         ref={inputRef}
-        // className='font-poppins'
+        prefix={prefix}
       />
     </Form.Item>
   );

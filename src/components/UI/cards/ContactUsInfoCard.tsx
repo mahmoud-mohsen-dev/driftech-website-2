@@ -1,8 +1,6 @@
 import Btn from "../buttons/Btn";
 
 function ContactUsInfoCard() {
-  const handleClick = () => {};
-
   return (
     <div className="font-poppins shadow-dark-gray flex flex-col gap-4 place-self-end rounded-xl px-[22px] py-[26px] xl:w-[569px]">
       <h2 className="text-[30px] leading-[45px] font-semibold">
@@ -37,7 +35,7 @@ function ContactUsInfoCard() {
         </li>
       </ul>
 
-      <Btn handleClick={handleClick} className="font-poppins w-full rounded-lg">
+      <Btn to="/contact-us" className="font-poppins w-full rounded-lg">
         Contact us
       </Btn>
     </div>

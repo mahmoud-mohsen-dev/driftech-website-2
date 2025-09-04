@@ -1,17 +1,28 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import MyNavLink from "../UI/MyNavLink";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
-import { getCookie } from "../../helpers/cookieHelpers";
+import { getCookie, removeCookie } from "../../helpers/cookieHelpers";
 import NotificationItem from "../UI/NotificationItem";
 import { v4 } from "uuid";
+import axios from "../../api/axios";
+import { useToast } from "../../hooks/useToast";
+
+const LOG_OUT = "api/auth/logout";
+
+const CarsBaseURL = import.meta.env.VITE_CARS_URL;
 
 function Header() {
   const [isMenuOnSmallScreensOpen, setIsMenuOnSmallScreensOpen] =
     useState(false);
   const [isNotificationMenuOpen, setIsNotificationMenuOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
+  const { success, error } = useToast();
   const navigate = useNavigate();
+
+  const notificationRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
 
   const hasNotification = true;
 
@@ -21,6 +32,69 @@ function Header() {
       setIsUserSignedIn(true);
     }
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        notificationRef.current &&
+        !notificationRef.current.contains(event.target as Node)
+      ) {
+        setIsNotificationMenuOpen(false);
+      }
+
+      if (
+        profileRef.current &&
+        !profileRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleSignOut = async () => {
+    try {
+      const token = getCookie("token");
+      if (!token) return;
+
+      const response = await axios.post(
+        LOG_OUT,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      // console.log(response);
+      // console.log(response?.data?.message);
+
+      if (response?.data?.message !== "تم تسجيل الخروج بنجاح.") {
+        error("Something went wrong");
+        return;
+      }
+
+      removeCookie("token");
+      setIsUserSignedIn(false);
+      success("You have successfully signed out!");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 500);
+    } catch (e: any) {
+      console.error(e);
+      console.error(e?.response?.data?.message ?? "Something went wrong");
+      error("Something went wrong");
+      removeCookie("token");
+      setIsUserSignedIn(false);
+    }
+  };
 
   return (
     <>
@@ -42,11 +116,15 @@ function Header() {
               <MyNavLink to="/" hasUnderLineBorder={true}>
                 Home
               </MyNavLink>
-              <MyNavLink to="/cars" hasUnderLineBorder={true}>
+              <MyNavLink
+                to={CarsBaseURL ?? "/"}
+                hasUnderLineBorder={true}
+                target="_blank"
+              >
                 Cars
               </MyNavLink>
-              <MyNavLink to="/my-finance-status" hasUnderLineBorder={true}>
-                My Finance Status
+              <MyNavLink to="/finance" hasUnderLineBorder={true}>
+                Finance
               </MyNavLink>
               <MyNavLink to="/about-us" hasUnderLineBorder={true}>
                 About
@@ -63,7 +141,7 @@ function Header() {
           {isUserSignedIn ? (
             // Profile and Notification Buttons
             <div className="hidden xl:flex xl:items-center xl:gap-4">
-              <div className="relative">
+              <div className="relative" ref={notificationRef}>
                 <button
                   className="relative h-8 w-8"
                   onClick={() => {
@@ -120,15 +198,51 @@ function Header() {
                   </>
                 )}
               </div>
-
-              <Link to={"/profile"}>
-                <img
-                  src="/icons/profile.svg"
-                  alt="profile icon"
-                  width={32}
-                  height={32}
-                />
-              </Link>
+              <div className="font-poppins relative" ref={profileRef}>
+                <button
+                  className="relative h-8 w-8"
+                  onClick={() => {
+                    setIsProfileMenuOpen(!isProfileMenuOpen);
+                  }}
+                >
+                  <img
+                    src="/icons/profile.svg"
+                    alt="profile icon"
+                    width={32}
+                    height={32}
+                  />
+                </button>
+                {isProfileMenuOpen && (
+                  <>
+                    <img
+                      src="/icons/polygon.svg"
+                      alt="polygon"
+                      width={24.44}
+                      height={20}
+                      className="absolute top-full left-1/2 h-[40px] min-w-[46px] -translate-x-1/2 translate-y-[16px] object-cover"
+                    />
+                    <div
+                      className="shadow-light-gray-2 absolute top-full right-0 hidden w-fit min-w-[215px] translate-x-2.5 translate-y-[48px] space-y-3 rounded-lg bg-white px-[0.875rem] py-[1.125rem] sm:block"
+                      onBlur={() => {
+                        setIsProfileMenuOpen(false);
+                      }}
+                    >
+                      <Link
+                        to="/profile"
+                        className="text-foundation-brown-normal block w-full text-sm text-[clamp(0.75rem,0.5vw+0.625rem,0.875rem)] leading-normal font-semibold"
+                      >
+                        Edit Profile
+                      </Link>
+                      <button
+                        className="text-foundation-red-medium w-full text-start text-sm text-[clamp(0.75rem,0.5vw+0.625rem,0.875rem)] leading-normal font-semibold"
+                        onClick={handleSignOut}
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           ) : (
             //  Desktop Auth Buttons
@@ -157,9 +271,9 @@ function Header() {
               onClick={() =>
                 setIsMenuOnSmallScreensOpen(!isMenuOnSmallScreensOpen)
               }
-              onBlur={() => {
-                setIsMenuOnSmallScreensOpen(false);
-              }}
+              // onBlur={() => {
+              //   setIsMenuOnSmallScreensOpen(false);
+              // }}
             >
               {isMenuOnSmallScreensOpen ? (
                 <HiOutlineX size={24} />
@@ -190,22 +304,23 @@ function Header() {
                         Home
                       </MyNavLink>
                       <MyNavLink
-                        to="/cars"
+                        to={CarsBaseURL ?? "/"}
                         onClick={() => {
                           setIsMenuOnSmallScreensOpen(false);
-                          navigate("/cars");
+                          // navigate(CarsBaseURL ?? "/");
                         }}
+                        target="_blank"
                       >
                         Cars
                       </MyNavLink>
                       <MyNavLink
-                        to="/my-finance-status"
+                        to="/finance"
                         onClick={() => {
                           setIsMenuOnSmallScreensOpen(false);
-                          navigate("/my-finance-status");
+                          navigate("/finance");
                         }}
                       >
-                        My Finance Status
+                        Finance
                       </MyNavLink>
                       <MyNavLink
                         to="/about-us"
@@ -234,25 +349,48 @@ function Header() {
                       >
                         Vlogs
                       </MyNavLink>
-                      <MyNavLink
-                        to="/login"
-                        onClick={() => {
-                          setIsMenuOnSmallScreensOpen(false);
-                          navigate("/login");
-                        }}
-                      >
-                        Login
-                      </MyNavLink>
-                      <Link
-                        to="/sign-up"
-                        className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal block w-full rounded-lg p-2.5 text-center capitalize transition duration-200 ease-in"
-                        onClick={() => {
-                          setIsMenuOnSmallScreensOpen(false);
-                          navigate("/sign-up");
-                        }}
-                      >
-                        Create Account
-                      </Link>
+
+                      {isUserSignedIn ? (
+                        <>
+                          <MyNavLink
+                            to="/profile"
+                            onClick={() => {
+                              setIsMenuOnSmallScreensOpen(false);
+                              navigate("/profile");
+                            }}
+                          >
+                            Profile
+                          </MyNavLink>
+                          <button
+                            className="text-foundation-red-medium w-full text-start text-[clamp(0.75rem,0.5vw+0.625rem,0.875rem)] leading-normal font-semibold"
+                            onClick={handleSignOut}
+                          >
+                            Sign Out
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <MyNavLink
+                            to="/login"
+                            onClick={() => {
+                              setIsMenuOnSmallScreensOpen(false);
+                              navigate("/login");
+                            }}
+                          >
+                            Login
+                          </MyNavLink>
+                          <Link
+                            to="/sign-up"
+                            className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal block w-full rounded-lg p-2.5 text-center capitalize transition duration-200 ease-in"
+                            onClick={() => {
+                              setIsMenuOnSmallScreensOpen(false);
+                              navigate("/sign-up");
+                            }}
+                          >
+                            Create Account
+                          </Link>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>

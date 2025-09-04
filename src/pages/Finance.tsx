@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import AppBreadCrumb from "../components/UI/AppBreadCrumb";
 import PaymentCalculatorSection from "../components/sections/financeSections/PaymentCalculatorSection";
 import FinanceLayout from "../layouts/FinanceLayout";
@@ -7,6 +7,7 @@ import { useState } from "react";
 import WorkDetailsSection from "../components/sections/financeSections/WorkDetailsSection";
 import IdentityVerificationSection from "../components/sections/financeSections/IdentityVerificationSection";
 import VerificationDocumentsSection from "../components/sections/financeSections/VerificationDocumentsSection";
+import ReferencePersonSection from "../components/sections/financeSections/ReferencePersonSection";
 
 function Finance() {
   const variants = [
@@ -22,6 +23,8 @@ function Finance() {
 
   const currentIndex = variants.indexOf(currentSection) + 1;
   const totalSteps = variants.length;
+
+  const naviagate = useNavigate();
 
   const items = [
     {
@@ -90,7 +93,7 @@ function Finance() {
                 setCurrentSection(variants[4]);
               }}
             >
-              <WorkDetailsSection />
+              <ReferencePersonSection />
             </FinanceLayout>
           )}
           {currentSection === "identity-verification" && (
@@ -119,6 +122,9 @@ function Finance() {
               // handleNextSection={() => {
               //   setCurrentSection(variants[6]);
               // }}
+              handleFinish={() => {
+                naviagate("/");
+              }}
             >
               <VerificationDocumentsSection />
             </FinanceLayout>
