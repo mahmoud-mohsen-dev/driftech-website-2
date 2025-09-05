@@ -21,6 +21,7 @@ function Header() {
   const { success, error, loading } = useToast();
   const navigate = useNavigate();
 
+  const menuOnSmallScreensRef = useRef<HTMLDivElement>(null);
   const notificationRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
@@ -35,6 +36,12 @@ function Header() {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      if (
+        menuOnSmallScreensRef.current &&
+        !menuOnSmallScreensRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOnSmallScreensOpen(false);
+      }
       if (
         notificationRef.current &&
         !notificationRef.current.contains(event.target as Node)
@@ -269,7 +276,7 @@ function Header() {
             </div>
           )}
 
-          <div className="relative block xl:hidden">
+          <div className="relative block xl:hidden" ref={menuOnSmallScreensRef}>
             {/* Burger Button - only on small screens */}
             <button
               className="flex items-center justify-center"
@@ -367,7 +374,7 @@ function Header() {
                             Profile
                           </MyNavLink>
                           <button
-                            className="text-foundation-red-medium w-full text-start text-[clamp(0.75rem,0.5vw+0.625rem,0.875rem)] leading-normal font-semibold"
+                            className="text-foundation-red-medium w-full text-start text-[clamp(0.875rem,0.5vw+0.75rem,1rem)] leading-normal font-semibold capitalize"
                             onClick={handleSignOut}
                           >
                             Sign Out
@@ -386,7 +393,7 @@ function Header() {
                           </MyNavLink>
                           <Link
                             to="/sign-up"
-                            className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal block w-full rounded-lg p-2.5 text-center capitalize transition duration-200 ease-in"
+                            className="text-neutral-0 bg-foundation-orange-normal hover:bg-neutral-0 hover:text-foundation-orange-normal block w-full rounded-lg p-2.5 text-center text-[clamp(0.875rem,0.5vw+0.75rem,1rem)] capitalize transition duration-200 ease-in"
                             onClick={() => {
                               setIsMenuOnSmallScreensOpen(false);
                               navigate("/sign-up");

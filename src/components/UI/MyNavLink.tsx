@@ -16,7 +16,7 @@ function MyNavLink({
   const isExternal = to.startsWith("http");
 
   const commonClasses =
-    "hover:text-foundation-orange-normal inline-block min-h-full text-black transition-all duration-200 ease-linear";
+    "hover:text-foundation-orange-normal inline-block min-h-full text-black transition-all duration-200 ease-linear text-[clamp(0.875rem,0.5vw+0.75rem,1rem)] w-full block";
 
   return (
     <li className="menu-item relative min-h-[30px]">
